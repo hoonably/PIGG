@@ -1,0 +1,9 @@
+dataset/fingertip-20k/*
+
+src/dataset_pkl/
+__pycache__/
+.DS_Store/
+checkpoints/
+out/
+logs/
+SM_section/

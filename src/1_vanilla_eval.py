@@ -3,7 +3,7 @@ Qwen3-VL Vanilla Evaluation Script
 Evaluate zero-shot performance of the vanilla Qwen3-VL model on specified users.
 
 Usage:
-    python 1_vanilla_eval.py 0           # Evaluate users on GPU 0 (기본적으로 1-10)
+    python 1_vanilla_eval.py 0           # Evaluate users on GPU 0 (default 1-10)
     python 1_vanilla_eval.py 0 --u 1 10  # Evaluate users 1-10 on GPU 0
 """
 
@@ -16,7 +16,7 @@ from scripts.eval_qwen3 import eval_user
 def vanilla_eval(user_list):
     """Evaluate vanilla Qwen3-VL on specified users"""
     for i in user_list:
-        save_root = f"./out/qwen3_vanilla/user_{i}"
+        save_root = f"./eval_results/qwen3_vanilla/user_{i}"
         result = eval_user("Qwen/Qwen3-VL-8B-Instruct", [i], save_root, is_lora=False)
         print(f'===== User {i} =====')
         print(result)

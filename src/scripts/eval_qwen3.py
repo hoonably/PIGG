@@ -94,13 +94,19 @@ def eval_user(checkpoint_path, user_eval, save_root, is_lora = False, eval_datas
     
     eval_dataloader = DataLoader(eval_dataset, batch_size=1, num_workers=NUM_WORKERS)
     if checkpoint_path != "Qwen/Qwen3-VL-8B-Instruct" :
-        dir_list = os.listdir(checkpoint_path)
-        checkpoint_list = []
-        for d in dir_list :
-            if "checkpoint" in d :
-                checkpoint_list.append(d)
-        checkpoint_list = natsort.natsorted(checkpoint_list)
-        checkpoint_path_lastest = os.path.join(checkpoint_path, checkpoint_list[-1])
+        # Check if the path itself is already a checkpoint directory
+        if os.path.exists(os.path.join(checkpoint_path, "config.json")):
+            # Path is already a checkpoint directory (e.g., checkpoint-500)
+            checkpoint_path_lastest = checkpoint_path
+        else:
+            # Path is a parent directory containing checkpoints
+            dir_list = os.listdir(checkpoint_path)
+            checkpoint_list = []
+            for d in dir_list :
+                if "checkpoint" in d :
+                    checkpoint_list.append(d)
+            checkpoint_list = natsort.natsorted(checkpoint_list)
+            checkpoint_path_lastest = os.path.join(checkpoint_path, checkpoint_list[-1])
     else :
         checkpoint_path_lastest = checkpoint_path
         is_lora = False

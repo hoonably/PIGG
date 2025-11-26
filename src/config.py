@@ -13,6 +13,11 @@ GRADIENT_ACCUMULATION_STEPS = 8  # Effective batch size = 8
 DATASET_ROOT = "./dataset_pkl"
 RAW_DATASET_ROOT = "../dataset/fingertip-20k"
 
+# Checkpoint paths
+CHECKPOINT = "/workspace/PIGG_checkpoints"
+CHECKPOINT_GLOBAL_LORA = "/workspace/PIGG_checkpoints/global_agent_lora"
+CHECKPOINT_GLOBAL_FULL = "/workspace/PIGG_checkpoints/global_agent_full"
+
 # Model settings
 MODEL_NAME = "Qwen/Qwen3-VL-8B-Instruct"
 MAX_PIXELS = 1280 * 28 * 28  # Image resolution
@@ -22,11 +27,11 @@ IGNORE_INDEX = -100  # For label masking (non-trainable tokens)
 
 # User splits
 USER_TEST = list(range(1, 11))      # 1-10: Test users
-USER_TRAIN = list(range(11, 74))    # 11-73: Training users
-USER_VAL = list(range(74, 84))      # 74-83: Validation users
+USER_TRAIN = list(range(11, 84))    # 11-83: Training users
+USER_VAL = []                       # Validation disabled (OOM issues)
 
 # Training settings
 NUM_WORKERS = 4
-SAVE_STEPS = 1000
+SAVE_STEPS = 500
 WARMUP_STEPS = 50
 WEIGHT_DECAY = 0.01

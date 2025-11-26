@@ -2,6 +2,10 @@
 
 """
 
+import re
+import os
+import numpy as np
+
 def parse_inference(text, is_gt = True):
     if not is_gt :
         text = text.split("assistant")[-1]
@@ -78,8 +82,8 @@ def evaluate_coordinates(pred_coords, gt_coords, delta=140):
     median_l2 = np.median(distances)
     
     return {
-        "click_accuracy": click_acc,
-        "mean_l2_error": mean_l2,
-        "median_l2_error": median_l2
+        "accuracy": click_acc,
+        "mean_l2": mean_l2,
+        "median_l2": median_l2
     }
 

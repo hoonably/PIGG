@@ -218,13 +218,15 @@ def get_training_arguments(output_dir: str, **kwargs) -> TrainingArguments:
     default_args = {
         "output_dir": output_dir,
         "per_device_train_batch_size": BATCH_SIZE,
+        "per_device_eval_batch_size": 1,  # Keep eval batch size small to avoid OOM
         "gradient_accumulation_steps": GRADIENT_ACCUMULATION_STEPS,
         "learning_rate": LR,
         "num_train_epochs": EPOCHS,
         "bf16": True,
         "save_strategy": "steps",
         "save_steps": SAVE_STEPS,
-        "save_total_limit": 3,
+        "save_total_limit": 3,  # Keep only last 3 checkpoints to save disk space
+        "save_safetensors": True,  # Use safetensors format (more reliable)
         "logging_steps": 10,
         "logging_first_step": True,
         "warmup_steps": WARMUP_STEPS,
@@ -235,8 +237,9 @@ def get_training_arguments(output_dir: str, **kwargs) -> TrainingArguments:
         "remove_unused_columns": False,  # Critical: keep all columns
         "dataloader_num_workers": 0,  # Avoid multiprocessing issues
         "report_to": [],  # Disable reporting (tensorboard not installed)
-        "load_best_model_at_end": True if kwargs.get("eval_strategy") == "steps" else False,
-        "metric_for_best_model": "eval_loss" if kwargs.get("eval_strategy") == "steps" else None,
+        "load_best_model_at_end": False,  # Disable to save memory
+        "metric_for_best_model": None,
+        "eval_accumulation_steps": 1,  # Clear eval outputs frequently to save memory
     }
     
     # Override with user-provided kwargs

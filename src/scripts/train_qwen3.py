@@ -87,10 +87,11 @@ def train_lora(checkpoint_dir: str, user_train: list, user_val: list = None):
     data_collator = Qwen3VLDataCollator(processor=processor)
     
     # 6. Setup training arguments
+    # Disable validation during training to avoid CUDA OOM during eval
     training_args = get_training_arguments(
         output_dir=checkpoint_dir,
-        eval_strategy="steps" if eval_dataset else "no",
-        eval_steps=1000 if eval_dataset else None,
+        eval_strategy="no",  # Disable validation to prevent OOM
+        eval_steps=None,
     )
     
     # 7. Create Trainer
@@ -173,10 +174,12 @@ def train_full(checkpoint_dir: str, user_train: list, user_val: list = None):
     data_collator = Qwen3VLDataCollator(processor=processor)
     
     # 5. Setup training arguments
+    # Disable validation during training to avoid CUDA OOM during eval
+    # Validation can be done separately after training completes
     training_args = get_training_arguments(
         output_dir=checkpoint_dir,
-        eval_strategy="steps" if eval_dataset else "no",
-        eval_steps=1000 if eval_dataset else None,
+        eval_strategy="no",  # Disable validation to prevent OOM
+        eval_steps=None,
     )
     
     # 6. Create Trainer

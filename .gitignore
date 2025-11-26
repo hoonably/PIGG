@@ -4,6 +4,6 @@ src/dataset_pkl/
 __pycache__/
 .DS_Store/
 checkpoints/
-out/
 logs/
 SM_section/
+eval_results/

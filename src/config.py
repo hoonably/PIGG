@@ -17,6 +17,8 @@ RAW_DATASET_ROOT = "../dataset/fingertip-20k"
 CHECKPOINT = "/workspace/PIGG_checkpoints"
 CHECKPOINT_GLOBAL_LORA = "/workspace/PIGG_checkpoints/global_agent_lora"
 CHECKPOINT_GLOBAL_FULL = "/workspace/PIGG_checkpoints/global_agent_full"
+CHECKPOINT_PERSON_LORA = "/workspace/PIGG_checkpoints/personalized_lora"
+CHECKPOINT_PERSON_FULL = "/workspace/PIGG_checkpoints/personalized_full"
 
 # Model settings
 MODEL_NAME = "Qwen/Qwen3-VL-8B-Instruct"
@@ -35,3 +37,10 @@ NUM_WORKERS = 4
 SAVE_STEPS = 500
 WARMUP_STEPS = 50
 WEIGHT_DECAY = 0.01
+
+# Personalized training settings
+K_FOLDS = 5
+PERSON_EPOCHS = 3
+PERSON_BATCH_SIZE = 1
+PERSON_GRADIENT_ACCUMULATION_STEPS = 4
+PERSON_LR = 5e-7  # Lower learning rate for personalized fine-tuning

@@ -7,6 +7,7 @@ Usage:
     python 3_eval_checkpoint.py 0 --cl 500         # LoRA checkpoint-500
     python 3_eval_checkpoint.py 0 --cf 500 --users 1 2 3
     python 3_eval_checkpoint.py 0 --checkpoint /path/to/checkpoint  # Custom path
+    python 3_eval_checkpoint.py 0 --checkpoint /workspace/PIGG_checkpoints/global_agent_full  # full fine-tuned
 """
 
 import os

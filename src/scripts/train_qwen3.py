@@ -54,7 +54,7 @@ def train_lora(checkpoint_dir: str, user_train: list, user_val: list = None):
     # 3. Configure LoRA
     print("Configuring LoRA...")
     lora_config = LoraConfig(
-        r=4,
+        r=16,
         lora_alpha=32,
         target_modules=[
             "q_proj", "k_proj", "v_proj", "o_proj",

@@ -54,12 +54,9 @@ def train_lora(checkpoint_dir: str, user_train: list, user_val: list = None):
     # 3. Configure LoRA
     print("Configuring LoRA...")
     lora_config = LoraConfig(
-        r=16,
+        r=8,  # Official recommendation: rank 8
         lora_alpha=32,
-        target_modules=[
-            "q_proj", "k_proj", "v_proj", "o_proj",
-            "gate_proj", "up_proj", "down_proj"
-        ],
+        target_modules="all-linear",  # Official recommendation: all linear layers
         lora_dropout=0.1,
         bias="none",
         task_type="CAUSAL_LM"
@@ -67,6 +64,49 @@ def train_lora(checkpoint_dir: str, user_train: list, user_val: list = None):
     
     model = get_peft_model(model, lora_config)
     model = prepare_model_for_training(model)
+    
+    # Freeze vision encoder and aligner according to official best practices
+    print("\nFreezing vision encoder and aligner...")
+    if hasattr(model, 'vision_tower') or hasattr(model, 'visual'):
+        # Freeze vision encoder
+        vision_tower = getattr(model, 'vision_tower', None) or getattr(model, 'visual', None)
+        if vision_tower is not None:
+            for param in vision_tower.parameters():
+                param.requires_grad = False
+            print("  Vision encoder frozen")
+    
+    # Freeze aligner/projector
+    if hasattr(model, 'multi_modal_projector'):
+        for param in model.multi_modal_projector.parameters():
+            param.requires_grad = False
+        print("  Multi-modal projector (aligner) frozen")
+    elif hasattr(model, 'mm_projector'):
+        for param in model.mm_projector.parameters():
+            param.requires_grad = False
+        print("  MM projector (aligner) frozen")
+    
+    # For PEFT models, also check base model
+    if hasattr(model, 'base_model'):
+        base_model = model.base_model
+        if hasattr(base_model, 'model'):
+            base_model = base_model.model
+        
+        # Freeze vision components in base model
+        if hasattr(base_model, 'vision_tower') or hasattr(base_model, 'visual'):
+            vision_tower = getattr(base_model, 'vision_tower', None) or getattr(base_model, 'visual', None)
+            if vision_tower is not None:
+                for param in vision_tower.parameters():
+                    param.requires_grad = False
+                print("  Base model vision encoder frozen")
+        
+        if hasattr(base_model, 'multi_modal_projector'):
+            for param in base_model.multi_modal_projector.parameters():
+                param.requires_grad = False
+            print("  Base model multi-modal projector frozen")
+        elif hasattr(base_model, 'mm_projector'):
+            for param in base_model.mm_projector.parameters():
+                param.requires_grad = False
+            print("  Base model mm projector frozen")
     
     print("\nTrainable parameters:")
     model.print_trainable_parameters()
@@ -149,8 +189,27 @@ def train_full(checkpoint_dir: str, user_train: list, user_val: list = None):
         device_map="auto",
     )
     
-    # DO NOT freeze vision encoder for full fine-tuning
-    # Vision features are critical for GUI grounding task
+    # Apply vision/aligner freezing for full fine-tuning as well
+    # According to official best practices
+    print("Applying vision encoder and aligner freezing...")
+    
+    if hasattr(model, 'vision_tower') or hasattr(model, 'visual'):
+        # Freeze vision encoder
+        vision_tower = getattr(model, 'vision_tower', None) or getattr(model, 'visual', None)
+        if vision_tower is not None:
+            for param in vision_tower.parameters():
+                param.requires_grad = False
+            print("  Vision encoder frozen")
+    
+    # Freeze aligner/projector
+    if hasattr(model, 'multi_modal_projector'):
+        for param in model.multi_modal_projector.parameters():
+            param.requires_grad = False
+        print("  Multi-modal projector (aligner) frozen")
+    elif hasattr(model, 'mm_projector'):
+        for param in model.mm_projector.parameters():
+            param.requires_grad = False
+        print("  MM projector (aligner) frozen")
     
     model = prepare_model_for_training(model)
     

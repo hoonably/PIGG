@@ -6,8 +6,8 @@ Starting from global checkpoint, fine-tune on individual user's data using K-fol
 For each user (1-10), split their data into K=5 folds, train on 4 folds, and evaluate on 1 fold.
 
 Usage:
-    python 4_finetune_person.py 1,2 --lora                          # GPU 1,2 / All users / from global full checkpoint
-    python 4_finetune_person.py 0 --users 1 --lora --global_lora    # User 1, LoRA, from global LoRA checkpoint
+    python 4_finetune_person.py 1,2,3 --lora                        # GPU 1,2 / All users / from global full checkpoint
+    python 4_finetune_person.py 0 --users 1 --global_lora    # User 1, Full finetunning, from global LoRA checkpoint
     python 4_finetune_person.py 0 --users 1 2 3 --lora              # Multiple users
 """
 
@@ -45,6 +45,12 @@ from config import (
     PERSON_GRADIENT_ACCUMULATION_STEPS,
     PERSON_EPOCHS,
     PERSON_LR,
+    PERSON_WARMUP_STEPS,
+    PERSON_WEIGHT_DECAY,
+    PERSON_SAVE_STEPS,
+    PERSON_EVAL_STEPS,
+    PERSON_LORA_RANK,
+    PERSON_LORA_ALPHA,
     USER_TEST
 )
 
@@ -167,16 +173,21 @@ class FoldEvalDataset:
         return len(self.samples)
 
 
-def eval_fold(user_id: int, fold_idx: int, checkpoint_path: str, is_lora: bool = False):
+def get_user_folds(user_id: int, k_folds: int = K_FOLDS):
+    """Get consistent K-folds for a user across training and evaluation"""
+    user_samples = load_user_data(user_id, DATASET_ROOT)
+    # Use fixed seed for reproducible fold splits
+    folds = create_k_folds(user_samples, k=k_folds, seed=42)
+    return folds, user_samples
+
+
+def eval_fold(user_id: int, fold_idx: int, checkpoint_path: str, folds: list, is_lora: bool = False):
     """Evaluate a single fold's model on its test set"""
     print(f"\n{'='*60}")
     print(f"Evaluating Fold {fold_idx}")
     print(f"{'='*60}")
     
-    # Load test data for this fold
-    print(f"Loading test data for fold {fold_idx}...")
-    user_samples = load_user_data(user_id, DATASET_ROOT)
-    folds = create_k_folds(user_samples, k=K_FOLDS, seed=42)
+    # Use pre-created folds to ensure consistency
     fold_samples = get_test_fold(folds, fold_idx)
     print(f"Test samples: {len(fold_samples)}")
     
@@ -249,13 +260,12 @@ def finetune_personalized(
         print(f"Log file: {log_file}")
     print()
     
-    # 1. Load user data and create K-folds
+    # 1. Load user data and create K-folds (consistent with evaluation)
     print(f"Loading data for user {user_id}...")
-    user_samples = load_user_data(user_id, DATASET_ROOT)
+    folds, user_samples = get_user_folds(user_id, K_FOLDS)
     print(f"Total samples: {len(user_samples)}")
     
     print(f"\nCreating {K_FOLDS}-fold split...")
-    folds = create_k_folds(user_samples, k=K_FOLDS)
     for i, fold in enumerate(folds):
         status = "[TEST]" if i == fold_idx else "[TRAIN]"
         print(f"  Fold {i}: {len(fold)} samples {status}")
@@ -306,11 +316,11 @@ def finetune_personalized(
             # Add new LoRA adapters on top of global LoRA
             print("  Adding new LoRA adapters for personalization...")
             lora_config = LoraConfig(
-                r=4,  #! 랭크
-                lora_alpha=32,
+                r=PERSON_LORA_RANK,  # Conservative rank for small datasets
+                lora_alpha=PERSON_LORA_ALPHA,
                 target_modules=[
-                    "q_proj", "k_proj", "v_proj", "o_proj",
-                    "gate_proj", "up_proj", "down_proj"
+                    "q_proj", "k_proj", "v_proj", "o_proj",  # Attention only
+                    "up_proj", "down_proj", "gate_proj"  # MLP
                 ],
                 lora_dropout=0.1,
                 bias="none",
@@ -333,11 +343,11 @@ def finetune_personalized(
             # Add LoRA on top of full checkpoint
             print("  Adding LoRA adapters for personalization...")
             lora_config = LoraConfig(
-                r=4,
-                lora_alpha=32,
+                r=PERSON_LORA_RANK,  # Conservative rank for small datasets
+                lora_alpha=PERSON_LORA_ALPHA,
                 target_modules=[
-                    "q_proj", "k_proj", "v_proj", "o_proj",
-                    "gate_proj", "up_proj", "down_proj"
+                    "q_proj", "k_proj", "v_proj", "o_proj",  # Attention only
+                    "up_proj", "down_proj", "gate_proj"  # MLP
                 ],
                 lora_dropout=0.1,
                 bias="none",
@@ -346,6 +356,49 @@ def finetune_personalized(
             model = get_peft_model(model, lora_config)
     
     model = prepare_model_for_training(model)
+    
+    # Freeze vision encoder and aligner according to official best practices
+    print("\nFreezing vision encoder and aligner...")
+    if hasattr(model, 'vision_tower') or hasattr(model, 'visual'):
+        # Freeze vision encoder
+        vision_tower = getattr(model, 'vision_tower', None) or getattr(model, 'visual', None)
+        if vision_tower is not None:
+            for param in vision_tower.parameters():
+                param.requires_grad = False
+            print("  Vision encoder frozen")
+    
+    # Freeze aligner/projector
+    if hasattr(model, 'multi_modal_projector'):
+        for param in model.multi_modal_projector.parameters():
+            param.requires_grad = False
+        print("  Multi-modal projector (aligner) frozen")
+    elif hasattr(model, 'mm_projector'):
+        for param in model.mm_projector.parameters():
+            param.requires_grad = False
+        print("  MM projector (aligner) frozen")
+    
+    # For PEFT models, also check base model
+    if hasattr(model, 'base_model'):
+        base_model = model.base_model
+        if hasattr(base_model, 'model'):
+            base_model = base_model.model
+        
+        # Freeze vision components in base model
+        if hasattr(base_model, 'vision_tower') or hasattr(base_model, 'visual'):
+            vision_tower = getattr(base_model, 'vision_tower', None) or getattr(base_model, 'visual', None)
+            if vision_tower is not None:
+                for param in vision_tower.parameters():
+                    param.requires_grad = False
+                print("  Base model vision encoder frozen")
+        
+        if hasattr(base_model, 'multi_modal_projector'):
+            for param in base_model.multi_modal_projector.parameters():
+                param.requires_grad = False
+            print("  Base model multi-modal projector frozen")
+        elif hasattr(base_model, 'mm_projector'):
+            for param in base_model.mm_projector.parameters():
+                param.requires_grad = False
+            print("  Base model mm projector frozen")
     
     # Print trainable parameters
     if use_lora and hasattr(model, 'print_trainable_parameters'):
@@ -368,12 +421,17 @@ def finetune_personalized(
     # 7. Setup training arguments (personalized settings)
     training_args = get_training_arguments(
         output_dir=output_dir,
-        eval_strategy="no",
+        eval_strategy="no",  # Disable evaluation during training
         eval_steps=None,
+        save_strategy="no",  # Disable intermediate checkpointing
+        save_steps=None,
         num_train_epochs=PERSON_EPOCHS,
         per_device_train_batch_size=PERSON_BATCH_SIZE,
         gradient_accumulation_steps=PERSON_GRADIENT_ACCUMULATION_STEPS,
         learning_rate=PERSON_LR,
+        warmup_steps=PERSON_WARMUP_STEPS,
+        weight_decay=PERSON_WEIGHT_DECAY,
+        save_total_limit=1,  # Only keep final model
     )
     
     # 8. Create Trainer
@@ -412,7 +470,7 @@ def finetune_personalized(
     print("EVALUATING TRAINED MODEL")
     print("=" * 80)
     
-    fold_result = eval_fold(user_id, fold_idx, output_dir, is_lora=use_lora)
+    fold_result = eval_fold(user_id, fold_idx, output_dir, folds, is_lora=use_lora)
     
     # 13. Clean up evaluation memory
     print("\nCleaning up evaluation memory...")
@@ -490,6 +548,7 @@ if __name__ == "__main__":
     base = "global_lora" if args.global_lora else "global_full"
     log_dir = "./logs"
     os.makedirs(log_dir, exist_ok=True)
+    os.makedirs(f"{log_dir}/finetune_person_{method}_{timestamp}", exist_ok=True)
     
     # Track all results for summary
     all_user_results = []
@@ -504,7 +563,7 @@ if __name__ == "__main__":
         
         # Train each fold
         for fold_idx in folds_to_train:
-            log_file = f"{log_dir}/finetune_person_{method}_{base}_user{user_id}_fold{fold_idx}_{timestamp}.log"
+            log_file = f"{log_dir}/finetune_person_{method}_{timestamp}/user{user_id}_fold{fold_idx}.log"
             
             # Redirect stdout to both terminal and log file
             tee = TeeLogger(log_file)
@@ -568,7 +627,7 @@ if __name__ == "__main__":
             print()
             
             # Save user summary
-            save_root = f"./eval_results/personalized_summary/{method}_{base}"
+            save_root = f"./eval_results/personalized/"
             os.makedirs(save_root, exist_ok=True)
             with open(os.path.join(save_root, f"user_{user_id}_summary.json"), "w") as f:
                 json.dump(user_summary, f, indent=4)

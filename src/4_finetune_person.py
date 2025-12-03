@@ -6,9 +6,9 @@ Starting from global checkpoint, fine-tune on individual user's data using K-fol
 For each user (1-10), split their data into K=5 folds, train on 4 folds, and evaluate on 1 fold.
 
 Usage:
-    python 4_finetune_person.py 1,2,3 --lora                        # GPU 1,2 / All users / from global full checkpoint
-    python 4_finetune_person.py 0 --users 1 --global_lora    # User 1, Full finetunning, from global LoRA checkpoint
-    python 4_finetune_person.py 0 --users 1 2 3 --lora              # Multiple users
+    python 4_finetune_person.py 0,1,2 --lora                          # GPU 0,1 / All users / LoRA on global full
+    python 4_finetune_person.py 0 --users 1                         # GPU 0 / User 1 / Full FT on global full
+    python 4_finetune_person.py 0 --users 1 2 3 --lora              # GPU 0 / Users 1,2,3 / LoRA on global full
 """
 
 import os
@@ -212,10 +212,26 @@ def eval_fold(user_id: int, fold_idx: int, checkpoint_path: str, folds: list, is
     # Save results
     save_results(result, save_root)
     
-    # Clean up evaluation model from memory
+    # Clean up evaluation model from memory - AGGRESSIVE
+    print("\nCleaning up evaluation objects...")
     import gc
-    torch.cuda.empty_cache()
-    gc.collect()
+    
+    # Delete local variables
+    if 'eval_dataset' in locals():
+        del eval_dataset
+    if 'result' in locals():
+        pass  # Keep result to return
+    
+    # Multiple cleanup rounds
+    for i in range(3):
+        torch.cuda.empty_cache()
+        gc.collect()
+    
+    if torch.cuda.is_available():
+        torch.cuda.synchronize()
+        torch.cuda.empty_cache()
+    
+    print("Evaluation cleanup completed.")
     
     return result
 
@@ -236,17 +252,16 @@ def finetune_personalized(
     user_id: int,
     fold_idx: int,
     use_lora: bool = True,
-    from_global_lora: bool = True,
     log_file: str = None
 ):
     """
     Fine-tune personalized model for a specific user and fold.
+    Always uses global full checkpoint as base.
     
     Args:
         user_id: Target user ID (1-10)
         fold_idx: Fold index to hold out (0 to K-1)
         use_lora: Whether to use LoRA for personalized fine-tuning
-        from_global_lora: Whether to start from global LoRA checkpoint (vs full checkpoint)
         log_file: Optional log file path
     """
     print("=" * 80)
@@ -255,7 +270,7 @@ def finetune_personalized(
     print(f"User ID: {user_id}")
     print(f"Fold: {fold_idx + 1}/{K_FOLDS} (holding out fold {fold_idx})")
     print(f"Method: {'LoRA' if use_lora else 'Full Fine-tuning'}")
-    print(f"Base checkpoint: {'Global LoRA' if from_global_lora else 'Global Full'}")
+    print(f"Base checkpoint: Global Full")
     if log_file:
         print(f"Log file: {log_file}")
     print()
@@ -274,10 +289,22 @@ def finetune_personalized(
     training_samples = get_training_folds(folds, fold_idx)
     print(f"\nTraining samples: {len(training_samples)}")
     print(f"Test samples: {len(folds[fold_idx])} (fold {fold_idx})")
+    
+    # Dynamically adjust epochs based on training data size
+    # if len(training_samples) >= 600:
+    #     person_epochs = 1
+    #     print(f"Large dataset ({len(training_samples)} samples) → Using {person_epochs} epoch")
+    # elif len(training_samples) >= 300:
+    #     person_epochs = 2
+    #     print(f"Medium dataset ({len(training_samples)} samples) → Using {person_epochs} epochs")
+    # else:
+    #     person_epochs = 3
+    #     print(f"Small dataset ({len(training_samples)} samples) → Using {person_epochs} epochs")
+    person_epochs = PERSON_EPOCHS
     print()
     
     # 2. Determine base checkpoint and output directory
-    base_checkpoint = CHECKPOINT_GLOBAL_LORA if from_global_lora else CHECKPOINT_GLOBAL_FULL
+    base_checkpoint = CHECKPOINT_GLOBAL_FULL
     
     if use_lora:
         output_dir = os.path.join(CHECKPOINT_PERSON_LORA, f"user_{user_id}", f"fold_{fold_idx}")
@@ -296,64 +323,30 @@ def finetune_personalized(
         max_pixels=MAX_PIXELS
     )
     
-    # 4. Load model from base checkpoint
-    print("Loading fine-tuned model from base checkpoint...")
+    # 4. Load model from base checkpoint (always from global full checkpoint)
+    print("Loading global full fine-tuned model...")
+    model = Qwen3VLForConditionalGeneration.from_pretrained(
+        base_checkpoint,
+        torch_dtype=torch.bfloat16,
+        device_map="auto",
+    )
     
-    if from_global_lora:
-        # Load base model first, then apply LoRA weights
-        print("  Loading base Qwen3-VL model...")
-        from config import MODEL_NAME
-        base_model = Qwen3VLForConditionalGeneration.from_pretrained(
-            MODEL_NAME,
-            torch_dtype=torch.bfloat16,
-            device_map="auto",
+    if use_lora:
+        # Add LoRA on top of global full checkpoint
+        print("  Adding LoRA adapters for personalization...")
+        lora_config = LoraConfig(
+            r=PERSON_LORA_RANK,
+            lora_alpha=PERSON_LORA_ALPHA,
+            target_modules="all-linear",
+            # target_modules=[
+            #     "q_proj", "k_proj", "v_proj", "o_proj",  # Attention only
+            #     "up_proj", "down_proj", "gate_proj"  # MLP
+            # ],
+            lora_dropout=0.1,
+            bias="none",
+            task_type="CAUSAL_LM"
         )
-        
-        print(f"  Loading global LoRA weights from {base_checkpoint}...")
-        model = PeftModel.from_pretrained(base_model, base_checkpoint)
-        
-        if use_lora:
-            # Add new LoRA adapters on top of global LoRA
-            print("  Adding new LoRA adapters for personalization...")
-            lora_config = LoraConfig(
-                r=PERSON_LORA_RANK,  # Conservative rank for small datasets
-                lora_alpha=PERSON_LORA_ALPHA,
-                target_modules=[
-                    "q_proj", "k_proj", "v_proj", "o_proj",  # Attention only
-                    "up_proj", "down_proj", "gate_proj"  # MLP
-                ],
-                lora_dropout=0.1,
-                bias="none",
-                task_type="CAUSAL_LM"
-            )
-            model = get_peft_model(model, lora_config)
-        else:
-            # Merge LoRA weights and do full fine-tuning
-            print("  Merging LoRA weights for full fine-tuning...")
-            model = model.merge_and_unload()
-    else:
-        # Load from global full checkpoint
-        model = Qwen3VLForConditionalGeneration.from_pretrained(
-            base_checkpoint,
-            torch_dtype=torch.bfloat16,
-            device_map="auto",
-        )
-        
-        if use_lora:
-            # Add LoRA on top of full checkpoint
-            print("  Adding LoRA adapters for personalization...")
-            lora_config = LoraConfig(
-                r=PERSON_LORA_RANK,  # Conservative rank for small datasets
-                lora_alpha=PERSON_LORA_ALPHA,
-                target_modules=[
-                    "q_proj", "k_proj", "v_proj", "o_proj",  # Attention only
-                    "up_proj", "down_proj", "gate_proj"  # MLP
-                ],
-                lora_dropout=0.1,
-                bias="none",
-                task_type="CAUSAL_LM"
-            )
-            model = get_peft_model(model, lora_config)
+        model = get_peft_model(model, lora_config)
     
     model = prepare_model_for_training(model)
     
@@ -425,7 +418,7 @@ def finetune_personalized(
         eval_steps=None,
         save_strategy="no",  # Disable intermediate checkpointing
         save_steps=None,
-        num_train_epochs=PERSON_EPOCHS,
+        num_train_epochs=person_epochs,  # Use dynamic epochs
         per_device_train_batch_size=PERSON_BATCH_SIZE,
         gradient_accumulation_steps=PERSON_GRADIENT_ACCUMULATION_STEPS,
         learning_rate=PERSON_LR,
@@ -474,8 +467,36 @@ def finetune_personalized(
     
     # 13. Clean up evaluation memory
     print("\nCleaning up evaluation memory...")
-    torch.cuda.empty_cache()
-    gc.collect()
+    
+    # Force delete all model-related objects
+    import gc
+    if 'eval_dataset' in locals():
+        del eval_dataset
+    
+    # Multiple rounds of cleanup
+    for i in range(3):
+        torch.cuda.empty_cache()
+        gc.collect()
+        if i < 2:
+            import time
+            time.sleep(2)
+    
+    # Verify memory cleanup
+    if torch.cuda.is_available():
+        memory_allocated = torch.cuda.memory_allocated() / (1024**3)
+        print(f"GPU memory still allocated: {memory_allocated:.2f} GB")
+        
+        # If still too much memory allocated, force more aggressive cleanup
+        if memory_allocated > 5.0:
+            print("High memory usage detected - forcing aggressive cleanup...")
+            torch.cuda.synchronize()
+            torch.cuda.empty_cache()
+            gc.collect()
+            import time
+            time.sleep(5)
+            torch.cuda.empty_cache()
+    
+    print("Memory cleanup completed.")
     
     return output_dir, fold_result
 
@@ -503,10 +524,6 @@ if __name__ == "__main__":
     parser.add_argument(
         '--lora', action='store_true',
         help='Use LoRA for personalized fine-tuning (default: full fine-tuning)'
-    )
-    parser.add_argument(
-        '--global_lora', action='store_true',
-        help='Start from global LoRA checkpoint (default: global full checkpoint)'
     )
     
     args = parser.parse_args()
@@ -545,7 +562,6 @@ if __name__ == "__main__":
     # Setup logging
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     method = "lora" if args.lora else "full"
-    base = "global_lora" if args.global_lora else "global_full"
     log_dir = "./logs"
     os.makedirs(log_dir, exist_ok=True)
     os.makedirs(f"{log_dir}/finetune_person_{method}_{timestamp}", exist_ok=True)
@@ -563,6 +579,75 @@ if __name__ == "__main__":
         
         # Train each fold
         for fold_idx in folds_to_train:
+            # Pre-cleanup before starting fold - CRITICAL for preventing OOM
+            print(f"\n{'='*80}")
+            print(f"[Pre-fold cleanup] Preparing for User {user_id}, Fold {fold_idx}...")
+            print(f"{'='*80}")
+            
+            import gc
+            import time
+            
+            # Aggressive memory cleanup
+            print("Step 1: Initial cleanup...")
+            torch.cuda.empty_cache()
+            gc.collect()
+            time.sleep(3)
+            
+            print("Step 2: Synchronize and cleanup...")
+            if torch.cuda.is_available():
+                torch.cuda.synchronize()
+            torch.cuda.empty_cache()
+            gc.collect()
+            time.sleep(3)
+            
+            print("Step 3: Final cleanup round...")
+            torch.cuda.empty_cache()
+            gc.collect()
+            
+            # Check and verify available memory
+            if torch.cuda.is_available():
+                memory_allocated = torch.cuda.memory_allocated() / (1024**3)
+                memory_reserved = torch.cuda.memory_reserved() / (1024**3)
+                memory_total = torch.cuda.get_device_properties(0).total_memory / (1024**3)
+                memory_free = memory_total - memory_reserved
+                
+                print(f"\nGPU Memory Status:")
+                print(f"  Allocated: {memory_allocated:.2f} GB")
+                print(f"  Reserved:  {memory_reserved:.2f} GB")
+                print(f"  Free:      {memory_free:.2f} GB")
+                print(f"  Total:     {memory_total:.2f} GB")
+                
+                # If not enough free memory, force more aggressive cleanup
+                if memory_free < 30 or memory_allocated > 5:
+                    print(f"\n⚠️  WARNING: Insufficient free memory ({memory_free:.1f} GB free, {memory_allocated:.2f} GB allocated)")
+                    print("Forcing extended cleanup sequence...")
+                    
+                    for round_num in range(5):
+                        print(f"  Cleanup round {round_num + 1}/5...")
+                        torch.cuda.synchronize()
+                        torch.cuda.empty_cache()
+                        gc.collect()
+                        time.sleep(4)
+                    
+                    # Final check
+                    memory_allocated_after = torch.cuda.memory_allocated() / (1024**3)
+                    memory_free_after = memory_total - torch.cuda.memory_reserved() / (1024**3)
+                    print(f"  After cleanup: {memory_free_after:.2f} GB free, {memory_allocated_after:.2f} GB allocated")
+                    
+                    if memory_free_after < 25:
+                        print(f"\n❌ ERROR: Still insufficient memory after cleanup!")
+                        print(f"   This may cause OOM. Consider:")
+                        print(f"   1. Reducing batch size or gradient accumulation")
+                        print(f"   2. Running fewer users simultaneously")
+                        print(f"   3. Restarting the script")
+                        print(f"\n   Waiting 20 seconds before attempting to continue...\n")
+                        time.sleep(20)
+                else:
+                    print(f"\n✓ Memory check passed. Sufficient free memory available.")
+            
+            print(f"{'='*80}\n")
+            time.sleep(2)  # Final brief wait
+            
             log_file = f"{log_dir}/finetune_person_{method}_{timestamp}/user{user_id}_fold{fold_idx}.log"
             
             # Redirect stdout to both terminal and log file
@@ -578,7 +663,6 @@ if __name__ == "__main__":
                     user_id=user_id,
                     fold_idx=fold_idx,
                     use_lora=args.lora,
-                    from_global_lora=args.global_lora,
                     log_file=log_file
                 )
                 user_fold_results.append(fold_result)
@@ -657,7 +741,7 @@ if __name__ == "__main__":
                   f"Median L2={result['avg_median_l2']:.2f}")
         
         # Save overall summary
-        save_root = f"./eval_results/personalized_summary/{method}_{base}"
+        save_root = f"./eval_results/personalized_summary/{method}"
         overall_summary = {
             "n_users": len(all_user_results),
             "overall_accuracy": float(overall_acc),

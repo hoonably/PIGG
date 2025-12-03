@@ -39,14 +39,14 @@ WARMUP_STEPS = 50
 WEIGHT_DECAY = 0.01
 
 # Personalized training settings (conservative for small datasets)
-K_FOLDS = 5
-PERSON_EPOCHS = 1  # Reduced from 3 to prevent overfitting
+K_FOLDS = 3
+PERSON_EPOCHS = 3
 PERSON_BATCH_SIZE = 1
-PERSON_GRADIENT_ACCUMULATION_STEPS = 8  # Increased for stable gradients
+PERSON_GRADIENT_ACCUMULATION_STEPS = 4  # Increased for stable gradients
 PERSON_LR = 2e-5  # Higher than global but still conservative
 PERSON_WARMUP_STEPS = 5  # Fewer warmup steps for small datasets
 PERSON_WEIGHT_DECAY = 0.01
 PERSON_SAVE_STEPS = 20  # Save more frequently for small datasets
 PERSON_EVAL_STEPS = 10  # Evaluate frequently to catch overfitting
-PERSON_LORA_RANK = 4  # Conservative rank for small data
-PERSON_LORA_ALPHA = 16  # Lower alpha
+PERSON_LORA_RANK = 8  # Conservative rank for small data
+PERSON_LORA_ALPHA = 32  # Lower alpha

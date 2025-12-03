@@ -237,5 +237,5 @@ if __name__ == "__main__":
     # 스크립트가 실행되는 위치를 기준으로 데이터를 처리합니다.
     # 다른 폴더를 지정하고 싶다면 아래 경로를 수정하세요.
     # 예: process_survey_data('/path/to/your/data_folder')
-    process_survey_data('/data/yeji/dataset/5')
-    # analyze_all_users('/data/yeji/dataset')
+    process_survey_data('./data')
+    # analyze_all_users('./data')

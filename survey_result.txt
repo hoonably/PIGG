@@ -1,0 +1,853 @@
+--- 전체 사용자 이용 패턴 분석 (./dataset/fingertip-20k/) ---
+
+분석 대상 사용자: 1, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 52, 53, 54, 55, 56, 57, 58, 59, 61, 62, 63, 64, 65, 66, 67, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 83, 86, 88, 89, 90, 91, 93, 94, 95, 96, 97, 99, 100
+
+[가장 많이 사용된 App] (사용자 수 기준)
+  - air.tv.douyu.android: 2명
+  - app.podcast.cosmos: 3명
+  - bin.mt.plus: 1명
+  - cc.forestapp: 2명
+  - cmb.pb: 2명
+  - cn.TuHu.android: 1명
+  - cn.cntvnews: 1명
+  - cn.com.bmac.nfc: 3명
+  - cn.com.langeasy.LangEasyLexis: 7명
+  - cn.com.yunma.school.app: 1명
+  - cn.comicup.apps.cppub: 1명
+  - cn.damai: 13명
+  - cn.dxy.idxyer: 1명
+  - cn.edu.pku.treehole: 1명
+  - cn.gov.lottery: 1명
+  - cn.gov.tax.its: 2명
+  - cn.kaiheila: 1명
+  - cn.ledongli.ldl: 9명
+  - cn.lunkr.android: 1명
+  - cn.milkycandy.objection: 1명
+  - cn.ticktick.task: 1명
+  - cn.unipus.ucampus.student: 1명
+  - cn.volvo.vcc: 1명
+  - cn.wenyu.bodian: 1명
+  - cn.wps.moffice_eng: 8명
+  - cn.xuexi.android: 7명
+  - com.MobileTicket: 38명
+  - com.Qunar: 2명
+  - com.able.wisdomtree: 1명
+  - com.accordion.analogcam.cn: 1명
+  - com.achievo.vipshop: 9명
+  - com.ai.obc.cbn.app: 1명
+  - com.alibaba.aliyun: 1명
+  - com.alibaba.android.rimet: 7명
+  - com.alibaba.wireless: 6명
+  - com.alicloud.databox: 1명
+  - com.alimama.moon: 1명
+  - com.aliyun.tongyi: 2명
+  - com.android.BBKClock: 6명
+  - com.android.bbkcalculator: 2명
+  - com.android.browser: 3명
+  - com.android.calendar: 7명
+  - com.android.camera: 2명
+  - com.android.chrome: 2명
+  - com.android.contacts: 2명
+  - com.android.deskclock: 14명
+  - com.android.email: 2명
+  - com.android.fileexplorer: 1명
+  - com.android.incallui: 1명
+  - com.android.launcher: 12명
+  - com.android.mms: 11명
+  - com.android.notes: 3명
+  - com.android.settings: 15명
+  - com.android.systemui: 10명
+  - com.android.thememanager: 1명
+  - com.android.vending: 2명
+  - com.anjuke.android.app: 1명
+  - com.antutu.ABenchMark: 3명
+  - com.autonavi.minimap: 57명
+  - com.badmintoncn.bbs: 1명
+  - com.baidu.BaiduMap: 12명
+  - com.baidu.baidutranslate: 5명
+  - com.baidu.duer.superapp: 1명
+  - com.baidu.homework: 1명
+  - com.baidu.netdisk: 8명
+  - com.baidu.newapp: 2명
+  - com.baidu.searchbox: 13명
+  - com.baidu.searchbox.lite: 2명
+  - com.baidu.tieba: 14명
+  - com.baidu.youavideo: 1명
+  - com.batiao.aiwrite: 1명
+  - com.bbk.appstore: 4명
+  - com.bbk.calendar: 3명
+  - com.bbk.launcher2: 8명
+  - com.bbk.theme: 1명
+  - com.beevle.xz.renxing.gdong: 1명
+  - com.bmcc.ms.ui: 1명
+  - com.boohee.one: 2명
+  - com.bwton.tjmetro: 1명
+  - com.byfen.market: 1명
+  - com.caidazq.dzhNew: 1명
+  - com.caing.news: 1명
+  - com.cainiao.wireless: 10명
+  - com.cat.readall: 1명
+  - com.cctv.yangshipin.app.androidp: 1명
+  - com.cdfsunrise.cdflehu: 1명
+  - com.cdsg.zgph: 1명
+  - com.cdzq.gst.android: 1명
+  - com.cebbank.mpoinx: 1명
+  - com.chaozh.iReaderFree: 1명
+  - com.chinamworld.bocmbci: 2명
+  - com.clover.daysmatter: 1명
+  - com.clx.xtb: 1명
+  - com.cmcc.cmvideo: 1명
+  - com.cmri.universalapp: 2명
+  - com.coderpage.mine: 1명
+  - com.coloros.alarmclock: 12명
+  - com.coloros.calculator: 2명
+  - com.coloros.calendar: 6명
+  - com.coloros.gallery3d: 5명
+  - com.coloros.note: 5명
+  - com.coloros.phonemanager: 3명
+  - com.coloros.weather2: 8명
+  - com.coolapk.market: 1명
+  - com.copymanga.app: 1명
+  - com.corp21cn.mail189: 1명
+  - com.csair.mbp: 1명
+  - com.ct.client: 1명
+  - com.cutv.shakeshakestglt: 1명
+  - com.daxiamx.bangumi.webs: 1명
+  - com.deepseek.chat: 30명
+  - com.denglin.duck: 1명
+  - com.dianping.v1: 27명
+  - com.didapinche.booking: 1명
+  - com.dongqiudi.news: 1명
+  - com.douban.frodo: 14명
+  - com.doudoubird.weather: 1명
+  - com.dragon.read: 12명
+  - com.duokan.phone.remotecontroller: 1명
+  - com.duolingo: 6명
+  - com.duowan.kiwi: 4명
+  - com.duozhuayu.dejavu: 1명
+  - com.dw.btime: 1명
+  - com.dz.hmjc: 1명
+  - com.eastmoney.android.berlin: 1명
+  - com.eastmoney.android.fund: 1명
+  - com.easy.abroad: 2명
+  - com.edu24ol.newclass: 1명
+  - com.eg.android.AlipayGphone: 22명
+  - com.entrobus.dreamlife: 1명
+  - com.eusoft.eshelper: 1명
+  - com.eusoft.eudic: 1명
+  - com.example.administrator.searchpicturetool: 1명
+  - com.example.fingertip: 16명
+  - com.example.musicclip: 1명
+  - com.example.raylink_flutter: 1명
+  - com.fenbi.android.servant: 1명
+  - com.fenbi.android.solar: 1명
+  - com.fileunzip.zxwknight: 1명
+  - com.flyersoft.moonreaderp: 1명
+  - com.gf.client: 1명
+  - com.github.kr328.clash: 2명
+  - com.gonlan.iplaymtg: 2명
+  - com.google.android.apps.translate: 1명
+  - com.google.android.googlequicksearchbox: 1명
+  - com.google.android.youtube: 2명
+  - com.gotokeep.keep: 6명
+  - com.greenpoint.android.mc10086.activity: 7명
+  - com.guanaitong: 1명
+  - com.guosen.android: 1명
+  - com.handsgo.jiakao.android: 1명
+  - com.hanweb.android.zhejiang.activity: 1명
+  - com.happyelements.AndroidAnimal: 1명
+  - com.hexin.android.futures: 1명
+  - com.hexin.plat.android: 2명
+  - com.heytap.browser: 5명
+  - com.heytap.market: 6명
+  - com.heytap.quicksearchbox: 1명
+  - com.hhk.hh10: 1명
+  - com.hicorenational.antifraud: 1명
+  - com.hihonor.android.launcher: 11명
+  - com.hihonor.android.totemweather: 3명
+  - com.hihonor.appmarket: 3명
+  - com.hihonor.baidu.browser: 3명
+  - com.hihonor.calculator: 2명
+  - com.hihonor.calendar: 3명
+  - com.hihonor.contacts: 1명
+  - com.hihonor.deskclock: 6명
+  - com.hihonor.hiboard: 1명
+  - com.hihonor.mms: 1명
+  - com.hihonor.photos: 2명
+  - com.hihonor.systemmanager: 1명
+  - com.hp.printercontrol: 1명
+  - com.hpbr.bosszhipin: 4명
+  - com.htinns: 1명
+  - com.huatu.handheld_huatu: 1명
+  - com.huawei.android.launcher: 36명
+  - com.huawei.android.thememanager: 1명
+  - com.huawei.android.totemweather: 24명
+  - com.huawei.appmarket: 17명
+  - com.huawei.browser: 8명
+  - com.huawei.calculator: 8명
+  - com.huawei.calendar: 5명
+  - com.huawei.camera: 1명
+  - com.huawei.contacts: 1명
+  - com.huawei.deskclock: 25명
+  - com.huawei.email: 1명
+  - com.huawei.filemanager: 2명
+  - com.huawei.health: 19명
+  - com.huawei.himovie: 2명
+  - com.huawei.hwireader: 1명
+  - com.huawei.hwread.dz: 5명
+  - com.huawei.music: 1명
+  - com.huawei.notepad: 7명
+  - com.huawei.ohos.inputmethod: 1명
+  - com.huawei.parentcontrol: 2명
+  - com.huawei.photos: 9명
+  - com.huawei.smarthome: 3명
+  - com.huawei.soundrecorder: 4명
+  - com.huawei.systemmanager: 4명
+  - com.huawei.videoeditor: 1명
+  - com.huawei.wallet: 1명
+  - com.hunantv.imgo.activity: 2명
+  - com.hundsun.qy.hospitalcloud.bj.xhhosp.hsyy: 1명
+  - com.hupu.games: 5명
+  - com.hupu.shihuo: 4명
+  - com.hypergryph.skland: 1명
+  - com.hzhu.m: 1명
+  - com.iflytek.elpmobile.marktool: 1명
+  - com.iflytek.xiaoxin: 1명
+  - com.iguopin.app: 1명
+  - com.instagram.android: 1명
+  - com.intsig.camscanner: 7명
+  - com.iqoo.powersaving: 2명
+  - com.iqoo.secure: 1명
+  - com.ixiaoma.xiningAndroid0971: 1명
+  - com.jdjdc.jdfastjdc: 1명
+  - com.jhyan.yan: 1명
+  - com.jingdong.app.mall: 49명
+  - com.jingyao.easybike: 4명
+  - com.jiongji.andriod.card: 2명
+  - com.jjwxc.reader: 2명
+  - com.job.android: 1명
+  - com.jstd.seconddog: 1명
+  - com.jx.cmcc.ict.ibelieve: 1명
+  - com.jym.gcmall: 1명
+  - com.jzyd.coupon: 1명
+  - com.kgbs.ticket: 1명
+  - com.kingagroot.kingdraw: 1명
+  - com.kingpoint.gmcchh: 1명
+  - com.kingsoft: 3명
+  - com.kmxs.reader: 3명
+  - com.koudai.weidian.buyer: 4명
+  - com.koudai.weishop: 1명
+  - com.ks.kaishustory: 1명
+  - com.kuaishou.nebula: 2명
+  - com.kuangxiangciweimao.novel: 2명
+  - com.kugou.android: 7명
+  - com.kugou.android.lite: 1명
+  - com.larus.nova: 8명
+  - com.lemon.lv: 5명
+  - com.lianjia.beike: 2명
+  - com.lingan.seeyou: 1명
+  - com.lingxigames.yuan.cn: 1명
+  - com.lion.market: 1명
+  - com.liulishuo.engzo: 1명
+  - com.lofter.android: 3명
+  - com.lolaage.tbulu.tools: 1명
+  - com.lqlc.mortgagecalculator: 1명
+  - com.lucky.luckyclient: 3명
+  - com.luna.music: 3명
+  - com.maidu.gkld: 1명
+  - com.manmanbuy.bijia: 2명
+  - com.max.xiaoheihe: 6명
+  - com.mc.acupoint_3d: 1명
+  - com.mcdonalds.gma.cn: 2명
+  - com.meitu.meiyancamera: 1명
+  - com.meitu.poster: 1명
+  - com.mfw.roadbook: 1명
+  - com.mi.health: 9명
+  - com.miHoYo.Yuanshen: 1명
+  - com.microsoft.emmx: 3명
+  - com.midea.ai.appliances: 1명
+  - com.midea.vm.washer: 2명
+  - com.mihoyo.hyperion: 6명
+  - com.mipay.wallet: 2명
+  - com.miui.calculator: 6명
+  - com.miui.fm: 1명
+  - com.miui.gallery: 5명
+  - com.miui.home: 17명
+  - com.miui.mediaeditor: 1명
+  - com.miui.notes: 4명
+  - com.miui.player: 1명
+  - com.miui.securitycenter: 3명
+  - com.miui.tsmclient: 1명
+  - com.miui.voiceassist: 1명
+  - com.miui.weather2: 9명
+  - com.moji.mjweather: 1명
+  - com.mooda.xqrj: 1명
+  - com.moonshot.kimichat: 5명
+  - com.moutai.mall: 1명
+  - com.mt.mtxx.mtxx: 4명
+  - com.nearme.gamecenter: 1명
+  - com.netease.buff: 2명
+  - com.netease.cloudmusic: 33명
+  - com.netease.gl: 1명
+  - com.netease.huajia: 1명
+  - com.netease.mail: 4명
+  - com.netease.mobimail: 1명
+  - com.netease.newsreader.activity: 1명
+  - com.nfdaily.nfplus: 1명
+  - com.nike.omega: 1명
+  - com.njh.biubiu: 1명
+  - com.nyafun: 1명
+  - com.oplus.games: 1명
+  - com.oplus.play: 1명
+  - com.oppo.launcher: 1명
+  - com.oray.sunlogin: 1명
+  - com.phoenix.read: 2명
+  - com.pingan.carowner: 3명
+  - com.plan.kot32.tomatotime: 1명
+  - com.podcast.podcasts: 1명
+  - com.positron_it.zlib: 1명
+  - com.psyone.brainmusic: 1명
+  - com.pupumall.customer: 1명
+  - com.pwrd.steam.esports: 2명
+  - com.qidian.QDReader: 9명
+  - com.qiyi.video: 2명
+  - com.qooapp.qoohelper: 1명
+  - com.qq.ac.android: 1명
+  - com.qq.qcloud: 1명
+  - com.quark.browser: 16명
+  - com.reading91.app: 1명
+  - com.realtech.xiaocan: 1명
+  - com.ruguoapp.jike: 1명
+  - com.rytong.ceair: 1명
+  - com.rytong.hnair: 1명
+  - com.samsung.android.calendar: 1명
+  - com.samsung.android.messaging: 1명
+  - com.sankuai.meituan: 59명
+  - com.sankuai.meituan.takeoutnew: 4명
+  - com.sankuai.movie: 3명
+  - com.sdo.sdaccountkey: 1명
+  - com.sdu.didi.psnger: 5명
+  - com.seblong.idream: 1명
+  - com.sec.android.app.clockpackage: 1명
+  - com.sec.android.app.launcher: 1명
+  - com.sec.android.app.sbrowser: 1명
+  - com.shanbay.sentence: 2명
+  - com.shark.jizhang: 2명
+  - com.shiqichuban.android: 1명
+  - com.shixiseng.activity: 1명
+  - com.shizhuang.duapp: 5명
+  - com.showstartfans.activity: 1명
+  - com.shuyou.book: 1명
+  - com.simshine.cn.aiothd: 1명
+  - com.sina.mail.free: 1명
+  - com.sina.weibo: 21명
+  - com.sinovatech.unicom.ui: 1명
+  - com.sixrpg.opalyer: 1명
+  - com.smile.gifmaker: 1명
+  - com.smzdm.client.android: 1명
+  - com.sobeycloud.wangjie.jygbdst: 1명
+  - com.sohu.inputmethod.sogou: 1명
+  - com.sohu.newsclient: 3명
+  - com.sonkwoapp: 1명
+  - com.soufun.app: 1명
+  - com.spotify.music: 2명
+  - com.ss.android.article.lite: 1명
+  - com.ss.android.article.news: 5명
+  - com.ss.android.auto: 3명
+  - com.ss.android.lark: 6명
+  - com.ss.android.ugc.aweme: 30명
+  - com.ss.android.ugc.aweme.lite: 3명
+  - com.ss.android.ugc.livelite: 2명
+  - com.starbucks.cn: 1명
+  - com.steampy.app: 1명
+  - com.supor.aiot: 1명
+  - com.taobao.idlefish: 28명
+  - com.taobao.litetao: 1명
+  - com.taobao.taobao: 61명
+  - com.taptap: 5명
+  - com.tencent.android.qqdownloader: 1명
+  - com.tencent.androidqqmail: 13명
+  - com.tencent.apps.valorant: 2명
+  - com.tencent.gamehelper.pg: 1명
+  - com.tencent.gamehelper.smoba: 1명
+  - com.tencent.hunyuan.app.chat: 6명
+  - com.tencent.karaoke: 2명
+  - com.tencent.map: 1명
+  - com.tencent.mm: 63명
+  - com.tencent.mobileqq: 21명
+  - com.tencent.mtt: 8명
+  - com.tencent.news: 1명
+  - com.tencent.qqlive: 7명
+  - com.tencent.qqmusic: 21명
+  - com.tencent.qt.qtl: 2명
+  - com.tencent.weishi: 1명
+  - com.tencent.wemeet.app: 7명
+  - com.tencent.weread: 9명
+  - com.tencent.wework: 10명
+  - com.tianqi2345: 1명
+  - com.tiantianlexue.student.yingyuxuexibaoeng: 1명
+  - com.tipsoon.android: 1명
+  - com.tmall.campus.and: 2명
+  - com.tmall.wireless: 3명
+  - com.tmri.app.main: 4명
+  - com.tongcheng.android: 1명
+  - com.transport.taojiyun: 1명
+  - com.twtapp: 1명
+  - com.tyky.guizhou.dangjian.party: 1명
+  - com.umetrip.android.msky.app: 5명
+  - com.unidy2002.thuinfo: 4명
+  - com.unionpay: 2명
+  - com.uu898.uuhavequality: 1명
+  - com.valvesoftware.android.steam.community: 1명
+  - com.vanyun.onetalk.app: 1명
+  - com.vgjump.jump: 1명
+  - com.videogo: 1명
+  - com.vivo.Tips: 1명
+  - com.vivo.ai.copilot: 3명
+  - com.vivo.browser: 3명
+  - com.vivo.gallery: 1명
+  - com.vivo.globalsearch: 1명
+  - com.vivo.health: 2명
+  - com.vivo.nightpearl: 1명
+  - com.vivo.pay: 1명
+  - com.vivo.space: 1명
+  - com.vivo.weather: 6명
+  - com.vmall.client: 1명
+  - com.vphonegaga.titan: 1명
+  - com.wdit.shrmtmh: 1명
+  - com.wegene.future: 1명
+  - com.weico.international: 2명
+  - com.whova.event: 1명
+  - com.wisedu.cpdaily: 1명
+  - com.wiwj.xiangyucustomer: 1명
+  - com.wuba: 1명
+  - com.wudaokou.hippo: 8명
+  - com.xiachufang: 2명
+  - com.xiaomi.market: 11명
+  - com.xiaomi.shop: 5명
+  - com.xiaomi.smarthome: 1명
+  - com.xiaomi.vipaccount: 2명
+  - com.xiaomi.youpin: 1명
+  - com.ximalaya.ting.android: 3명
+  - com.xingin.xhs: 65명
+  - com.xmcy.hykb: 1명
+  - com.xs.fm: 1명
+  - com.xs.fm.lite: 1명
+  - com.xt.retouch: 2명
+  - com.xtc.watch: 1명
+  - com.xuehai.response: 1명
+  - com.xunmeng.pinduoduo: 24명
+  - com.yaya.zone: 1명
+  - com.yek.android.kfc.activitys: 3명
+  - com.ygkj.chelaile.standard: 1명
+  - com.yhhy.whrhx.mi: 1명
+  - com.yipiao: 2명
+  - com.yitong.cd.mbank.android: 1명
+  - com.yongyou: 1명
+  - com.youdao.dict: 10명
+  - com.youdao.translator: 1명
+  - com.youku.phone: 3명
+  - com.youloft.daziplan: 1명
+  - com.youqi.miaomiao: 1명
+  - com.yumc.phsuperapp: 2명
+  - com.yuque.mobile.android.app: 1명
+  - com.yxt.phoenix: 1명
+  - com.zebra.ichess: 1명
+  - com.zhaopin.social: 1명
+  - com.zhihu.android: 33명
+  - com.zhihu.vip.android: 1명
+  - com.zhipuai.qingyan: 1명
+  - com.zlketang.mm: 1명
+  - com.zmzx.college.search: 1명
+  - com.zte.smarthome: 1명
+  - com.zzw.october: 2명
+  - ctrip.android.view: 23명
+  - enfc.metro: 2명
+  - im.xingzhe: 1명
+  - io.legado.play.release: 1명
+  - io.robertying.learnx: 2명
+  - jp.co.canon.ic.cameraconnect: 1명
+  - mark.via: 1명
+  - me.ele: 15명
+  - melandru.lonicera: 1명
+  - net.csdn.csdnplus: 4명
+  - net.researchgate.shellapp: 1명
+  - nutstore.android: 1명
+  - offershow.app: 1명
+  - org.geekbang.geekTime: 1명
+  - org.mozilla.firefox: 1명
+  - plus.H5A84F959: 1명
+  - rwy.baoan.netsupervisor: 1명
+  - sg.edu.nus.univus: 1명
+  - synjones.commerce.xjtu: 1명
+  - tech.echoing.kuril: 1명
+  - tv.acfundanmaku.video: 1명
+  - tv.danmaku.bili: 69명
+  - uni.UNIEB8DD7C: 1명
+  - vz.com: 2명
+
+[가장 많이 사용된 Scenario] (사용자 수 기준)
+  - 交通工具: 47명
+  - 他人住所: 1명
+  - 住所: 79명
+  - 停车场: 1명
+  - 其他: 4명
+  - 办公场所: 51명
+  - 医疗机构: 13명
+  - 商场: 34명
+  - 地下车库: 1명
+  - 城市街道: 38명
+  - 娱乐休闲场所: 41명
+  - 学校: 65명
+  - 小区楼底: 1명
+  - 小卖部: 1명
+  - 快递柜: 1명
+  - 快递柜附近: 1명
+  - 快递点: 1명
+  - 快递站: 1명
+  - 快递驿站: 1명
+  - 文艺场馆: 15명
+  - 旅店: 1명
+  - 电梯: 1명
+  - 自然户外: 31명
+  - 运动场馆: 27명
+  - 银行: 1명
+  - 餐饮场所: 57명
+  - 驿站: 1명
+  - 高铁站: 2명
+
+[사용자별 고유 사용 항목]
+
+  -- 사용자 '1' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '3' --
+    - 이 사용자만 사용하는 App: com.bmcc.ms.ui, com.coderpage.mine, com.koudai.weishop
+    - 이 사용자만 사용하는 Scenario: 快递站
+
+  -- 사용자 '4' --
+    - 이 사용자만 사용하는 App: com.jstd.seconddog, net.researchgate.shellapp
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '5' --
+    - 이 사용자만 사용하는 App: com.bbk.theme, com.iqoo.secure, com.lqlc.mortgagecalculator, com.vivo.Tips, com.vivo.nightpearl, com.vivo.space
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '6' --
+    - 이 사용자만 사용하는 App: com.showstartfans.activity
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '9' --
+    - 이 사용자만 사용하는 App: synjones.commerce.xjtu
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '10' --
+    - 이 사용자만 사용하는 App: com.positron_it.zlib, com.qq.ac.android, im.xingzhe
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '11' --
+    - 이 사용자만 사용하는 App: com.ai.obc.cbn.app
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '12' --
+    - 이 사용자만 사용하는 App: cn.lunkr.android, com.bwton.tjmetro, com.huawei.camera, com.twtapp
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '13' --
+    - 이 사용자만 사용하는 App: com.cmcc.cmvideo, com.example.raylink_flutter, com.yuque.mobile.android.app, offershow.app
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '14' --
+    - 이 사용자만 사용하는 App: cn.dxy.idxyer, com.happyelements.AndroidAnimal, com.jx.cmcc.ict.ibelieve, com.mc.acupoint_3d, com.nearme.gamecenter, com.oplus.games, com.oplus.play, com.tencent.map, uni.UNIEB8DD7C
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '15' --
+    - 이 사용자만 사용하는 App: com.meitu.poster, com.oppo.launcher, com.shuyou.book, mark.via
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '16' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '17' --
+    - 이 사용자만 사용하는 App: com.cdfsunrise.cdflehu, com.doudoubird.weather, com.huawei.android.thememanager, com.nike.omega, com.starbucks.cn, com.tencent.gamehelper.pg
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '18' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '19' --
+    - 이 사용자만 사용하는 App: com.instagram.android, com.mfw.roadbook, com.valvesoftware.android.steam.community
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '21' --
+    - 이 사용자만 사용하는 App: com.accordion.analogcam.cn, com.baidu.youavideo, com.mooda.xqrj, com.wisedu.cpdaily
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '22' --
+    - 이 사용자만 사용하는 App: com.anjuke.android.app, com.wuba, io.legado.play.release
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '23' --
+    - 이 사용자만 사용하는 App: com.duozhuayu.dejavu
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '24' --
+    - 이 사용자만 사용하는 App: com.xiaomi.smarthome, com.xiaomi.youpin
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '25' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '26' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '27' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '28' --
+    - 이 사용자만 사용하는 App: com.csair.mbp, com.dongqiudi.news, com.kgbs.ticket, com.lolaage.tbulu.tools, com.pupumall.customer, com.rytong.hnair, com.zhipuai.qingyan
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '29' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '30' --
+    - 이 사용자만 사용하는 App: com.corp21cn.mail189, com.ct.client, com.edu24ol.newclass, com.huawei.music, com.huawei.videoeditor, com.sobeycloud.wangjie.jygbdst, com.taobao.litetao, com.tencent.android.qqdownloader, com.tencent.news, com.tencent.weishi, com.vmall.client, com.zhaopin.social
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '31' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '32' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '34' --
+    - 이 사용자만 사용하는 App: com.whova.event
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '36' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '37' --
+    - 이 사용자만 사용하는 App: com.android.incallui, com.google.android.apps.translate, com.google.android.googlequicksearchbox
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '38' --
+    - 이 사용자만 사용하는 App: com.eusoft.eshelper
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '39' --
+    - 이 사용자만 사용하는 App: com.hundsun.qy.hospitalcloud.bj.xhhosp.hsyy, com.rytong.ceair, com.vgjump.jump, com.wegene.future
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '40' --
+    - 이 사용자만 사용하는 App: com.hihonor.systemmanager, com.shixiseng.activity
+    - 이 사용자만 사용하는 Scenario: 他人住所
+
+  -- 사용자 '41' --
+    - 이 사용자만 사용하는 App: com.netease.mobimail
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '42' --
+    - 이 사용자만 사용하는 App: com.htinns, melandru.lonicera
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '43' --
+    - 이 사용자만 사용하는 App: sg.edu.nus.univus
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '44' --
+    - 이 사용자만 사용하는 App: cn.wenyu.bodian, com.flyersoft.moonreaderp, com.miui.player, com.miui.voiceassist, com.tencent.gamehelper.smoba
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '45' --
+    - 이 사용자만 사용하는 App: cn.edu.pku.treehole
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '46' --
+    - 이 사용자만 사용하는 App: cn.comicup.apps.cppub, cn.milkycandy.objection, cn.ticktick.task, com.chaozh.iReaderFree, com.meitu.meiyancamera, com.netease.huajia
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '47' --
+    - 이 사용자만 사용하는 App: com.denglin.duck, com.jhyan.yan, com.lingxigames.yuan.cn, com.psyone.brainmusic
+    - 이 사용자만 사용하는 Scenario: 快递柜, 快递柜附近, 快递点
+
+  -- 사용자 '48' --
+    - 이 사용자만 사용하는 App: com.liulishuo.engzo
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '49' --
+    - 이 사용자만 사용하는 App: com.hihonor.mms, com.youloft.daziplan, com.youqi.miaomiao, tech.echoing.kuril
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '51' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '52' --
+    - 이 사용자만 사용하는 App: com.huawei.contacts, com.huawei.wallet
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '53' --
+    - 이 사용자만 사용하는 App: org.mozilla.firefox
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '54' --
+    - 이 사용자만 사용하는 App: cn.unipus.ucampus.student, com.able.wisdomtree, com.uu898.uuhavequality
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '55' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '56' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 银行
+
+  -- 사용자 '57' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '58' --
+    - 이 사용자만 사용하는 App: com.jdjdc.jdfastjdc
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '59' --
+    - 이 사용자만 사용하는 App: cn.com.yunma.school.app, cn.kaiheila, com.eusoft.eudic, com.example.administrator.searchpicturetool, com.hhk.hh10, com.jzyd.coupon, com.netease.gl, com.nyafun, com.qooapp.qoohelper, com.sdo.sdaccountkey, com.sohu.inputmethod.sogou, com.sonkwoapp, com.steampy.app, tv.acfundanmaku.video
+    - 이 사용자만 사용하는 Scenario: 快递驿站, 驿站
+
+  -- 사용자 '61' --
+    - 이 사용자만 사용하는 App: com.copymanga.app, com.daxiamx.bangumi.webs, com.miHoYo.Yuanshen
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '62' --
+    - 이 사용자만 사용하는 App: com.hihonor.hiboard, com.ixiaoma.xiningAndroid0971, com.yxt.phoenix
+    - 이 사용자만 사용하는 Scenario: 小区楼底
+
+  -- 사용자 '63' --
+    - 이 사용자만 사용하는 App: com.huawei.email, com.sina.mail.free
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '64' --
+    - 이 사용자만 사용하는 App: com.caing.news, com.podcast.podcasts, com.vivo.globalsearch
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '65' --
+    - 이 사용자만 사용하는 App: com.badmintoncn.bbs, com.kugou.android.lite, com.netease.newsreader.activity
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '66' --
+    - 이 사용자만 사용하는 App: com.cctv.yangshipin.app.androidp, com.clover.daysmatter, com.plan.kot32.tomatotime
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '67' --
+    - 이 사용자만 사용하는 App: com.hypergryph.skland
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '69' --
+    - 이 사용자만 사용하는 App: com.realtech.xiaocan
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '70' --
+    - 이 사용자만 사용하는 App: cn.gov.lottery, com.cdsg.zgph, com.didapinche.booking, com.seblong.idream, com.vivo.gallery, com.vivo.pay, com.yitong.cd.mbank.android, com.zlketang.mm
+    - 이 사용자만 사용하는 Scenario: 停车场, 小卖部, 电梯
+
+  -- 사용자 '71' --
+    - 이 사용자만 사용하는 App: com.fenbi.android.servant, com.maidu.gkld, com.tipsoon.android
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '72' --
+    - 이 사용자만 사용하는 App: com.iguopin.app, com.miui.tsmclient
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '73' --
+    - 이 사용자만 사용하는 App: com.alimama.moon, com.cat.readall, com.example.musicclip, com.hexin.android.futures, com.hp.printercontrol, com.midea.ai.appliances, com.xtc.watch, com.zhihu.vip.android, jp.co.canon.ic.cameraconnect, plus.H5A84F959
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '74' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '75' --
+    - 이 사용자만 사용하는 App: com.samsung.android.calendar, com.samsung.android.messaging, com.sec.android.app.clockpackage, com.sec.android.app.launcher, com.sec.android.app.sbrowser, com.supor.aiot
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '76' --
+    - 이 사용자만 사용하는 App: com.huatu.handheld_huatu
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '77' --
+    - 이 사용자만 사용하는 App: com.caidazq.dzhNew, com.cdzq.gst.android, com.eastmoney.android.fund, com.xs.fm.lite
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '79' --
+    - 이 사용자만 사용하는 App: com.dz.hmjc, com.smile.gifmaker
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '80' --
+    - 이 사용자만 사용하는 App: com.baidu.homework, com.batiao.aiwrite, com.clx.xtb, com.ks.kaishustory, com.reading91.app, com.tiantianlexue.student.yingyuxuexibaoeng, com.xs.fm
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '83' --
+    - 이 사용자만 사용하는 App: com.handsgo.jiakao.android, com.moji.mjweather
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '86' --
+    - 이 사용자만 사용하는 App: cn.cntvnews, cn.volvo.vcc, com.moutai.mall, com.tianqi2345, com.tyky.guizhou.dangjian.party
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '88' --
+    - 이 사용자만 사용하는 App: com.cebbank.mpoinx, com.eastmoney.android.berlin, com.huawei.ohos.inputmethod, com.simshine.cn.aiothd, com.smzdm.client.android
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '89' --
+    - 이 사용자만 사용하는 App: cn.TuHu.android, com.alicloud.databox, com.dw.btime, com.hanweb.android.zhejiang.activity, com.hzhu.m, com.iflytek.elpmobile.marktool, com.iflytek.xiaoxin, com.lingan.seeyou, com.ruguoapp.jike, com.wiwj.xiangyucustomer, com.xuehai.response
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '90' --
+    - 이 사용자만 사용하는 App: com.youdao.translator
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '91' --
+    - 이 사용자만 사용하는 App: com.duokan.phone.remotecontroller, com.fenbi.android.solar, com.oray.sunlogin, com.yhhy.whrhx.mi, com.zebra.ichess, com.zmzx.college.search
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '93' --
+    - 이 사용자만 사용하는 App: com.soufun.app, com.transport.taojiyun, com.videogo, nutstore.android
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '94' --
+    - 이 사용자만 사용하는 App: com.miui.mediaeditor
+    - 이 사용자만 사용하는 Scenario: 地下车库, 旅店
+
+  -- 사용자 '95' --
+    - 이 사용자만 사용하는 App: com.guosen.android, com.huawei.hwireader
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '96' --
+    - 이 사용자만 사용하는 App: com.cutv.shakeshakestglt, com.entrobus.dreamlife, com.gf.client, com.hicorenational.antifraud, com.hihonor.contacts, com.kingpoint.gmcchh, com.nfdaily.nfplus, com.shiqichuban.android, com.ss.android.article.lite, com.vanyun.onetalk.app
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '97' --
+    - 이 사용자만 사용하는 App: com.alibaba.aliyun, com.baidu.duer.superapp, com.guanaitong, com.heytap.quicksearchbox, com.sinovatech.unicom.ui, com.wdit.shrmtmh, com.yaya.zone, com.yongyou, com.zte.smarthome, org.geekbang.geekTime
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '99' --
+    - 이 사용자만 사용하는 App: bin.mt.plus, com.android.fileexplorer, com.android.thememanager, com.beevle.xz.renxing.gdong, com.byfen.market, com.coolapk.market, com.fileunzip.zxwknight, com.job.android, com.jym.gcmall, com.kingagroot.kingdraw, com.lion.market, com.miui.fm, com.njh.biubiu, com.qq.qcloud, com.sixrpg.opalyer, com.tongcheng.android, com.vphonegaga.titan, com.xmcy.hykb, com.ygkj.chelaile.standard, rwy.baoan.netsupervisor
+    - 이 사용자만 사용하는 Scenario: 없음
+
+  -- 사용자 '100' --
+    - 이 사용자만 사용하는 App: 없음
+    - 이 사용자만 사용하는 Scenario: 없음
+
+----------------------------------------------------

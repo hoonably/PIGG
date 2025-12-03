@@ -162,18 +162,22 @@ def analyze_all_users(base_dir='.'):
     """
     지정된 기본 디렉토리에서 숫자로 된 사용자 폴더를 스캔하여,
     발견된 모든 사용자들의 App/Scenario 사용 패턴을 분석하고 비교합니다.
+    결과를 survey_result.txt 파일로 저장합니다.
     """
-    print(f"\n\n--- 전체 사용자 이용 패턴 분석 ({base_dir}) ---")
+    # 출력 내용을 저장할 리스트
+    output_lines = []
+    
+    output_lines.append(f"--- 전체 사용자 이용 패턴 분석 ({base_dir}) ---\n")
 
     user_data = {}
     try:
         dir_entries = os.listdir(base_dir)
     except FileNotFoundError:
-        print(f"오류: 디렉토리를 찾을 수 없습니다: '{base_dir}'")
+        output_lines.append(f"오류: 디렉토리를 찾을 수 없습니다: '{base_dir}'\n")
         return
 
-    # 1. 각 사용자별 데이터 추출
-    for entry_name in dir_entries:
+    # 1. 각 사용자별 데이터 추출 (숫자순 정렬)
+    for entry_name in sorted(dir_entries, key=lambda x: int(x) if x.isdigit() else 0):
         full_path = os.path.join(base_dir, entry_name)
         if os.path.isdir(full_path) and entry_name.isdigit():
             user_id = entry_name
@@ -185,11 +189,18 @@ def analyze_all_users(base_dir='.'):
                 }
 
     if not user_data:
-        print("분석할 사용자 데이터를 찾지 못했습니다. 폴더 구조를 확인해주세요.")
-        print("베이스 디렉토리 안에 '1', '3'과 같이 숫자로 된 폴더가 있어야 합니다.")
+        output_lines.append("분석할 사용자 데이터를 찾지 못했습니다. 폴더 구조를 확인해주세요.\n")
+        output_lines.append("베이스 디렉토리 안에 '1', '3'과 같이 숫자로 된 폴더가 있어야 합니다.\n")
+        # 파일로 저장
+        output_file = os.path.join(base_dir, "survey_result.txt")
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.writelines(output_lines)
+        print(f"분석 결과가 '{output_file}'에 저장되었습니다.")
         return
 
-    print(f"\n분석 대상 사용자: {', '.join(sorted(user_data.keys()))}")
+    # 사용자 ID를 숫자순으로 정렬
+    sorted_user_ids = sorted(user_data.keys(), key=lambda x: int(x))
+    output_lines.append(f"\n분석 대상 사용자: {', '.join(sorted_user_ids)}\n")
 
     # 2. 전체 통계 및 공통 항목 계산
     all_apps = [app for user_id in user_data for app in user_data[user_id]['apps']]
@@ -198,23 +209,28 @@ def analyze_all_users(base_dir='.'):
     app_counts = Counter(all_apps)
     scenario_counts = Counter(all_scenarios)
 
-    print("\n[가장 많이 사용된 App] (사용자 수 기준)")
+    output_lines.append("\n[가장 많이 사용된 App] (사용자 수 기준)\n")
     if not app_counts:
-        print("  - 데이터 없음")
+        output_lines.append("  - 데이터 없음\n")
     else:
-        for app, count in app_counts.most_common():
-            print(f"  - {app}: {count}명")
+        # 알파벳순 정렬
+        for app in sorted(app_counts.keys()):
+            count = app_counts[app]
+            output_lines.append(f"  - {app}: {count}명\n")
 
-    print("\n[가장 많이 사용된 Scenario] (사용자 수 기준)")
+    output_lines.append("\n[가장 많이 사용된 Scenario] (사용자 수 기준)\n")
     if not scenario_counts:
-        print("  - 데이터 없음")
+        output_lines.append("  - 데이터 없음\n")
     else:
-        for scenario, count in scenario_counts.most_common():
-            print(f"  - {scenario}: {count}명")
+        # 알파벳순 정렬
+        for scenario in sorted(scenario_counts.keys()):
+            count = scenario_counts[scenario]
+            output_lines.append(f"  - {scenario}: {count}명\n")
 
-    # 3. 사용자별 고유 항목 분석
-    print("\n[사용자별 고유 사용 항목]")
-    for user_id, data in user_data.items():
+    # 3. 사용자별 고유 항목 분석 (사용자 번호순)
+    output_lines.append("\n[사용자별 고유 사용 항목]\n")
+    for user_id in sorted_user_ids:
+        data = user_data[user_id]
         # 자신을 제외한 다른 모든 사용자의 App/Scenario 집합 생성
         other_users_apps = set()
         other_users_scenarios = set()
@@ -227,15 +243,32 @@ def analyze_all_users(base_dir='.'):
         unique_to_user_apps = sorted(list(data['apps'] - other_users_apps))
         unique_to_user_scenarios = sorted(list(data['scenarios'] - other_users_scenarios))
 
-        print(f"\n  -- 사용자 '{user_id}' --")
-        print(f"    - 이 사용자만 사용하는 App: {', '.join(unique_to_user_apps) if unique_to_user_apps else '없음'}")
-        print(f"    - 이 사용자만 사용하는 Scenario: {', '.join(unique_to_user_scenarios) if unique_to_user_scenarios else '없음'}")
+        output_lines.append(f"\n  -- 사용자 '{user_id}' --\n")
+        output_lines.append(f"    - 이 사용자만 사용하는 App: {', '.join(unique_to_user_apps) if unique_to_user_apps else '없음'}\n")
+        output_lines.append(f"    - 이 사용자만 사용하는 Scenario: {', '.join(unique_to_user_scenarios) if unique_to_user_scenarios else '없음'}\n")
 
-    print("\n----------------------------------------------------")
+    output_lines.append("\n----------------------------------------------------\n")
+    
+    # 파일로 저장
+    output_file = os.path.join("./survey_result.txt")
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.writelines(output_lines)
+    
+    print(f"분석 결과가 '{output_file}'에 저장되었습니다.")
     
 if __name__ == "__main__":
     # 스크립트가 실행되는 위치를 기준으로 데이터를 처리합니다.
     # 다른 폴더를 지정하고 싶다면 아래 경로를 수정하세요.
-    # 예: process_survey_data('/path/to/your/data_folder')
-    process_survey_data('./data')
-    # analyze_all_users('./data')
+    process_survey_data('./dataset/fingertip-20k/1')
+    process_survey_data('./dataset/fingertip-20k/2')
+    process_survey_data('./dataset/fingertip-20k/3')
+    process_survey_data('./dataset/fingertip-20k/4')
+    process_survey_data('./dataset/fingertip-20k/5')
+    process_survey_data('./dataset/fingertip-20k/6')
+    process_survey_data('./dataset/fingertip-20k/7')
+    process_survey_data('./dataset/fingertip-20k/8')
+    process_survey_data('./dataset/fingertip-20k/9')
+    process_survey_data('./dataset/fingertip-20k/10')
+
+    
+    analyze_all_users('./dataset/fingertip-20k/')

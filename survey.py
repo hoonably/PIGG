@@ -130,15 +130,19 @@ def process_survey_data(root_dir='.'):
 def extract_unique_items(root_dir):
     """
     지정된 사용자의 데이터 폴더를 분석하여 고유한 App과 Scenario 목록(set)을 반환합니다.
+    또한 각 App/Scenario의 사용 횟수도 함께 반환합니다.
     """
     unique_apps = set()
     unique_scenarios = set()
+    app_counts = Counter()
+    scenario_counts = Counter()
+    total_count = 0
 
     try:
         dir_entries = os.listdir(root_dir)
     except FileNotFoundError:
         print(f"오류: '{root_dir}' 디렉토리를 찾을 수 없습니다.")
-        return unique_apps, unique_scenarios
+        return unique_apps, unique_scenarios, app_counts, scenario_counts, total_count
 
     for entry_name in dir_entries:
         full_path = os.path.join(root_dir, entry_name)
@@ -148,14 +152,17 @@ def extract_unique_items(root_dir):
                 try:
                     with open(json_file_path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
+                        total_count += 1
                         if data.get("app"):
                             unique_apps.add(data["app"])
+                            app_counts[data["app"]] += 1
                         if data.get("scenario"):
                             unique_scenarios.add(data["scenario"])
+                            scenario_counts[data["scenario"]] += 1
                 except Exception as e:
                     print(f"경고: '{json_file_path}' 처리 중 오류 발생: {e}")
                     
-    return unique_apps, unique_scenarios
+    return unique_apps, unique_scenarios, app_counts, scenario_counts, total_count
 
 
 def analyze_all_users(base_dir='.'):
@@ -181,11 +188,14 @@ def analyze_all_users(base_dir='.'):
         full_path = os.path.join(base_dir, entry_name)
         if os.path.isdir(full_path) and entry_name.isdigit():
             user_id = entry_name
-            apps, scenarios = extract_unique_items(full_path)
+            apps, scenarios, app_counts, scenario_counts, total = extract_unique_items(full_path)
             if apps or scenarios:  # 데이터가 있는 사용자만 추가
                 user_data[user_id] = {
                     'apps': apps,
-                    'scenarios': scenarios
+                    'scenarios': scenarios,
+                    'app_counts': app_counts,
+                    'scenario_counts': scenario_counts,
+                    'total_count': total
                 }
 
     if not user_data:
@@ -243,9 +253,22 @@ def analyze_all_users(base_dir='.'):
         unique_to_user_apps = sorted(list(data['apps'] - other_users_apps))
         unique_to_user_scenarios = sorted(list(data['scenarios'] - other_users_scenarios))
 
+        # 고유 App들의 총 사용 횟수 계산
+        unique_app_total_count = sum(data['app_counts'][app] for app in unique_to_user_apps)
+        unique_scenario_total_count = sum(data['scenario_counts'][scenario] for scenario in unique_to_user_scenarios)
+        
+        # 전체 데이터 대비 비율 계산
+        total_count = data['total_count']
+        app_percentage = (unique_app_total_count / total_count * 100) if total_count > 0 else 0
+        scenario_percentage = (unique_scenario_total_count / total_count * 100) if total_count > 0 else 0
+
         output_lines.append(f"\n  -- 사용자 '{user_id}' --\n")
         output_lines.append(f"    - 이 사용자만 사용하는 App: {', '.join(unique_to_user_apps) if unique_to_user_apps else '없음'}\n")
+        if unique_to_user_apps:
+            output_lines.append(f"    - 데이터: {unique_app_total_count}개 ({app_percentage:.1f}%)\n")
         output_lines.append(f"    - 이 사용자만 사용하는 Scenario: {', '.join(unique_to_user_scenarios) if unique_to_user_scenarios else '없음'}\n")
+        if unique_to_user_scenarios:
+            output_lines.append(f"    - 데이터: {unique_scenario_total_count}개 ({scenario_percentage:.1f}%)\n")
 
     output_lines.append("\n----------------------------------------------------\n")
     

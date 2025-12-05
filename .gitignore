@@ -8,3 +8,5 @@ logs/
 SM_section/
 eval_results/
 visualizations/
+visualizations_personalized/
+visualizations_global/

@@ -15,21 +15,21 @@ def parse_inference(text, is_gt = True):
 
     x = y = 0
 
-    # 1. grounding 블록으로 split
+    # 1. Split by grounding block
     if 'grounding' in text :
         blocks = text.split('```grounding')
     else :
         blocks = [text]
         
     if len(blocks) > 1:
-        # 첫 번째 블록 이후가 실제 grounding 블록들
+        # Actual grounding blocks are after the first block
         for block in blocks[1:]:
             if '```' in block:
                 block_content = block.split('```')[0]
 
-                # 2. 다양한 좌표 패턴 적용
+                # 2. Apply various coordinate patterns
                 patterns = [
-                    r'\(?(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\)?',                  # 4값 좌표
+                    r'\(?(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\)?',                  # 4-value coordinates
                     r'\(?(\d+)\s*,\s*(\d+)\)?\s*to\s*\(?(\d+)\s*,\s*(\d+)\)?',           # (x1,y1) to (x2,y2)
                     r'(?:Top-left|Bottom-right)[^:]*:\s*\(?(\d+)\s*,\s*(\d+)\)?',        # Top-left / Bottom-right
                     r'\[?(\d+)\s*,\s*(\d+)\]?',                                         # [x,y]
@@ -41,9 +41,9 @@ def parse_inference(text, is_gt = True):
                     if match:
                         nums = [int(g) for g in match.groups() if g and g.isdigit()]
                         if len(nums) >= 2:
-                            x, y = nums[0], nums[1]  # 첫 좌표 기준
+                            x, y = nums[0], nums[1]  # Based on first coordinate
                         break
-                break  # 첫 번째 블록만 처리하고 싶으면 여기서 break
+                break  # Break here to process only the first block
 
     return content, x, y
 
@@ -57,9 +57,9 @@ def save_results(result, save_path) :
 def evaluate_coordinates(pred_coords, gt_coords, delta=140):
     """    
     Parameters:
-        pred_coords (list of tuple): [(x1, y1), (x2, y2), ...] 예측 좌표
-        gt_coords (list of tuple): [(x1, y1), (x2, y2), ...] 정답 좌표
-        delta (float, optional): Click Accuracy 기준 거리(px)
+        pred_coords (list of tuple): [(x1, y1), (x2, y2), ...] predicted coordinates
+        gt_coords (list of tuple): [(x1, y1), (x2, y2), ...] ground truth coordinates
+        delta (float, optional): Click Accuracy threshold distance (px)
     
     Returns:
         dict: {
@@ -71,7 +71,7 @@ def evaluate_coordinates(pred_coords, gt_coords, delta=140):
     pred_coords = np.array(pred_coords)
     gt_coords = np.array(gt_coords)
     
-    # L2 거리 계산
+    # Calculate L2 distance
     distances = np.linalg.norm(pred_coords - gt_coords, axis=1)
     
     # Click Accuracy@δ

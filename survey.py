@@ -4,21 +4,21 @@ from collections import Counter
 
 def print_period_summary(sorted_results):
     """
-    정렬된 결과 리스트를 3개의 시간대로 나누어 각 시간대별로
-    사용된 App과 Scenario의 중복 없는 목록과, 이전 시간대 대비
-    새롭게 추가된 항목을 출력합니다.
+    Divide the sorted result list into 3 time periods and output
+    unique Apps and Scenarios used in each period, along with
+    newly added items compared to the previous period.
     """
-    print("\n\n--- 시간대별 App 및 Scenario 요약 ---")
+    print("\n\n--- App and Scenario Summary by Time Period ---")
     n = len(sorted_results)
     if n == 0:
-        print("요약할 데이터가 없습니다.")
+        print("No data to summarize.")
         print("\n------------------------------------")
         return
 
-    # 결과를 3개의 구간으로 나눌 인덱스를 계산합니다.
+    # Calculate indices to divide results into 3 periods
     split_points = [0, n // 3, (n * 2) // 3, n]
     
-    # 이전 시간대까지의 모든 App과 Scenario를 추적하기 위한 set
+    # Track all Apps and Scenarios from previous periods
     seen_apps = set()
     seen_scenarios = set()
 
@@ -26,37 +26,37 @@ def print_period_summary(sorted_results):
         start_index = split_points[i]
         end_index = split_points[i+1]
 
-        # 현재 시간대의 데이터가 없으면 건너뜁니다.
+        # Skip if current period has no data
         if start_index == end_index:
             continue
 
         period_data = sorted_results[start_index:end_index]
         
-        # 현재 시간대의 중복 없는 App과 Scenario (set)
+        # Unique Apps and Scenarios in current period (set)
         current_apps = set(item['app'] for item in period_data if item.get('app'))
         current_scenarios = set(item['scenario'] for item in period_data if item.get('scenario'))
 
-        # 새롭게 추가된 항목 찾기
+        # Find newly added items
         new_apps = sorted(list(current_apps - seen_apps))
         new_scenarios = sorted(list(current_scenarios - seen_scenarios))
 
-        # 시간대 정보(시작과 끝)를 출력합니다.
+        # Output period information (start and end)
         start_ts = period_data[0]['timestamp']
         end_ts = period_data[-1]['timestamp']
-        print(f"\n[시간대 {i+1}: {start_ts} ~ {end_ts}]")
+        print(f"\n[Period {i+1}: {start_ts} ~ {end_ts}]")
         
-        # 전체 고유 목록 출력
+        # Output complete unique list
         unique_apps = sorted(list(current_apps))
         unique_scenarios = sorted(list(current_scenarios))
         print(f"  - Unique Apps: {', '.join(unique_apps) if unique_apps else 'N/A'}")
         print(f"  - Unique Scenarios: {', '.join(unique_scenarios) if unique_scenarios else 'N/A'}")
 
-        # 새롭게 추가된 항목 출력 (첫 시간대는 제외)
+        # Output newly added items (skip first period)
         if i > 0:
-            print(f"  - ✨ New Apps: {', '.join(new_apps) if new_apps else '없음'}")
-            print(f"  - ✨ New Scenarios: {', '.join(new_scenarios) if new_scenarios else '없음'}")
+            print(f"  - ✨ New Apps: {', '.join(new_apps) if new_apps else 'None'}")
+            print(f"  - ✨ New Scenarios: {', '.join(new_scenarios) if new_scenarios else 'None'}")
 
-        # 현재 시간대의 항목들을 seen set에 추가하여 다음 시간대와 비교할 수 있도록 업데이트
+        # Update seen set with current period items for next period comparison
         seen_apps.update(current_apps)
         seen_scenarios.update(current_scenarios)
 
@@ -65,44 +65,44 @@ def print_period_summary(sorted_results):
 
 def process_survey_data(root_dir='.'):
     """
-    지정된 루트 디렉토리에서 타임스탬프 형식의 폴더를 찾아
-    'survey_result.json' 파일의 내용을 시간순으로 정리하고 요약합니다.
+    Find folders with timestamp format in the specified root directory,
+    organize and summarize the contents of 'survey_result.json' files in chronological order.
 
     Args:
-        root_dir (str): 타임스탬프 폴더들이 있는 루트 디렉토리 경로.
-                        기본값은 현재 디렉토리입니다.
+        root_dir (str): Root directory path containing timestamp folders.
+                        Default is current directory.
     """
     results = []
 
-    # 루트 디렉토리의 모든 항목을 순회합니다.
+    # Iterate through all items in root directory
     try:
         dir_entries = os.listdir(root_dir)
     except FileNotFoundError:
-        print(f"오류: 디렉토리를 찾을 수 없습니다: '{root_dir}'")
+        print(f"Error: Directory not found: '{root_dir}'")
         return
 
     for entry_name in dir_entries:
-        # 항목의 전체 경로를 구성합니다.
+        # Construct full path
         full_path = os.path.join(root_dir, entry_name)
 
-        # 해당 항목이 디렉토리인지, 이름이 타임스탬프 형식인지 확인합니다.
-        # (예: 20250309_220811)
+        # Check if item is a directory with timestamp format name
+        # (e.g., 20250309_220811)
         if os.path.isdir(full_path) and len(entry_name) == 15 and entry_name[8] == '_':
-            # survey_result.json 파일의 경로를 구성합니다.
+            # Construct path to survey_result.json file
             json_file_path = os.path.join(full_path, "survey_result.json")
 
-            # JSON 파일이 존재하는지 확인합니다.
+            # Check if JSON file exists
             if os.path.exists(json_file_path):
                 try:
                     with open(json_file_path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
                         
-                        # 필요한 데이터 추출 (키가 없는 경우 None으로 처리)
+                        # Extract required data (handle missing keys with None)
                         scenario = data.get("scenario")
                         app = data.get("app")
                         intent_description = data.get("intentDescription")
 
-                        # 결과 리스트에 딕셔너리 형태로 추가
+                        # Add to results list as dictionary
                         results.append({
                             "timestamp": entry_name,
                             "scenario": scenario,
@@ -110,27 +110,27 @@ def process_survey_data(root_dir='.'):
                             "intentDescription": intent_description
                         })
                 except json.JSONDecodeError:
-                    print(f"경고: '{json_file_path}' 파일이 올바른 JSON 형식이 아닙니다.")
+                    print(f"Warning: '{json_file_path}' file is not in valid JSON format.")
                 except Exception as e:
-                    print(f"경고: '{json_file_path}' 파일을 처리하는 중 오류 발생: {e}")
+                    print(f"Warning: Error occurred while processing '{json_file_path}': {e}")
 
-    # 'timestamp' 키를 기준으로 결과를 시간순으로 정렬합니다.
-    # 타임스탬프 문자열 형식(YYYYMMDD_HHMMSS)은 문자열 정렬 시 시간순서가 보장됩니다.
+    # Sort results chronologically by 'timestamp' key
+    # Timestamp string format (YYYYMMDD_HHMMSS) guarantees chronological order when sorted as strings
     sorted_results = sorted(results, key=lambda x: x["timestamp"])
 
-    # 정렬된 결과를 출력합니다.
+    # Output sorted results
     if not sorted_results:
-        print("분석할 데이터를 찾지 못했습니다. 폴더 구조를 확인해주세요.")
+        print("No data found to analyze. Please check folder structure.")
         return
 
-    # 시간대별 요약 정보를 출력하는 함수를 호출합니다.
+    # Call function to output summary information by time period
     print_period_summary(sorted_results)
 
 
 def extract_unique_items(root_dir):
     """
-    지정된 사용자의 데이터 폴더를 분석하여 고유한 App과 Scenario 목록(set)을 반환합니다.
-    또한 각 App/Scenario의 사용 횟수도 함께 반환합니다.
+    Analyze the data folder for a specific user and return unique App and Scenario lists (set).
+    Also returns usage count for each App/Scenario.
     """
     unique_apps = set()
     unique_scenarios = set()
@@ -141,7 +141,7 @@ def extract_unique_items(root_dir):
     try:
         dir_entries = os.listdir(root_dir)
     except FileNotFoundError:
-        print(f"오류: '{root_dir}' 디렉토리를 찾을 수 없습니다.")
+        print(f"Error: Directory '{root_dir}' not found.")
         return unique_apps, unique_scenarios, app_counts, scenario_counts, total_count
 
     for entry_name in dir_entries:
@@ -160,36 +160,36 @@ def extract_unique_items(root_dir):
                             unique_scenarios.add(data["scenario"])
                             scenario_counts[data["scenario"]] += 1
                 except Exception as e:
-                    print(f"경고: '{json_file_path}' 처리 중 오류 발생: {e}")
+                    print(f"Warning: Error occurred while processing '{json_file_path}': {e}")
                     
     return unique_apps, unique_scenarios, app_counts, scenario_counts, total_count
 
 
 def analyze_all_users(base_dir='.'):
     """
-    지정된 기본 디렉토리에서 숫자로 된 사용자 폴더를 스캔하여,
-    발견된 모든 사용자들의 App/Scenario 사용 패턴을 분석하고 비교합니다.
-    결과를 survey_result.txt 파일로 저장합니다.
+    Scan the specified base directory for numbered user folders,
+    analyze and compare App/Scenario usage patterns of all discovered users.
+    Save results to survey_result.txt file.
     """
-    # 출력 내용을 저장할 리스트
+    # List to store output content
     output_lines = []
     
-    output_lines.append(f"--- 전체 사용자 이용 패턴 분석 ({base_dir}) ---\n")
+    output_lines.append(f"--- Overall User Usage Pattern Analysis ({base_dir}) ---\n")
 
     user_data = {}
     try:
         dir_entries = os.listdir(base_dir)
     except FileNotFoundError:
-        output_lines.append(f"오류: 디렉토리를 찾을 수 없습니다: '{base_dir}'\n")
+        output_lines.append(f"Error: Directory not found: '{base_dir}'\n")
         return
 
-    # 1. 각 사용자별 데이터 추출 (숫자순 정렬)
+    # 1. Extract data for each user (sorted numerically)
     for entry_name in sorted(dir_entries, key=lambda x: int(x) if x.isdigit() else 0):
         full_path = os.path.join(base_dir, entry_name)
         if os.path.isdir(full_path) and entry_name.isdigit():
             user_id = entry_name
             apps, scenarios, app_counts, scenario_counts, total = extract_unique_items(full_path)
-            if apps or scenarios:  # 데이터가 있는 사용자만 추가
+            if apps or scenarios:  # Add only users with data
                 user_data[user_id] = {
                     'apps': apps,
                     'scenarios': scenarios,
@@ -199,49 +199,49 @@ def analyze_all_users(base_dir='.'):
                 }
 
     if not user_data:
-        output_lines.append("분석할 사용자 데이터를 찾지 못했습니다. 폴더 구조를 확인해주세요.\n")
-        output_lines.append("베이스 디렉토리 안에 '1', '3'과 같이 숫자로 된 폴더가 있어야 합니다.\n")
-        # 파일로 저장
+        output_lines.append("No user data found to analyze. Please check folder structure.\n")
+        output_lines.append("Base directory should contain numbered folders like '1', '3'.\n")
+        # Save to file
         output_file = os.path.join(base_dir, "survey_result.txt")
         with open(output_file, 'w', encoding='utf-8') as f:
             f.writelines(output_lines)
-        print(f"분석 결과가 '{output_file}'에 저장되었습니다.")
+        print(f"Analysis results saved to '{output_file}'.")
         return
 
-    # 사용자 ID를 숫자순으로 정렬
+    # Sort user IDs numerically
     sorted_user_ids = sorted(user_data.keys(), key=lambda x: int(x))
-    output_lines.append(f"\n분석 대상 사용자: {', '.join(sorted_user_ids)}\n")
+    output_lines.append(f"\nAnalyzed users: {', '.join(sorted_user_ids)}\n")
 
-    # 2. 전체 통계 및 공통 항목 계산
+    # 2. Calculate overall statistics and common items
     all_apps = [app for user_id in user_data for app in user_data[user_id]['apps']]
     all_scenarios = [scenario for user_id in user_data for scenario in user_data[user_id]['scenarios']]
 
     app_counts = Counter(all_apps)
     scenario_counts = Counter(all_scenarios)
 
-    output_lines.append("\n[가장 많이 사용된 App] (사용자 수 기준)\n")
+    output_lines.append("\n[Most Used Apps] (by number of users)\n")
     if not app_counts:
-        output_lines.append("  - 데이터 없음\n")
+        output_lines.append("  - No data\n")
     else:
-        # 알파벳순 정렬
+        # Sort alphabetically
         for app in sorted(app_counts.keys()):
             count = app_counts[app]
-            output_lines.append(f"  - {app}: {count}명\n")
+            output_lines.append(f"  - {app}: {count} users\n")
 
-    output_lines.append("\n[가장 많이 사용된 Scenario] (사용자 수 기준)\n")
+    output_lines.append("\n[Most Used Scenarios] (by number of users)\n")
     if not scenario_counts:
-        output_lines.append("  - 데이터 없음\n")
+        output_lines.append("  - No data\n")
     else:
-        # 알파벳순 정렬
+        # Sort alphabetically
         for scenario in sorted(scenario_counts.keys()):
             count = scenario_counts[scenario]
-            output_lines.append(f"  - {scenario}: {count}명\n")
+            output_lines.append(f"  - {scenario}: {count} users\n")
 
-    # 3. 사용자별 고유 항목 분석 (사용자 번호순)
-    output_lines.append("\n[사용자별 고유 사용 항목]\n")
+    # 3. Analyze unique items per user (by user number)
+    output_lines.append("\n[Unique Usage Items per User]\n")
     for user_id in sorted_user_ids:
         data = user_data[user_id]
-        # 자신을 제외한 다른 모든 사용자의 App/Scenario 집합 생성
+        # Create set of all other users' Apps/Scenarios
         other_users_apps = set()
         other_users_scenarios = set()
         for other_id, other_data in user_data.items():
@@ -249,39 +249,39 @@ def analyze_all_users(base_dir='.'):
                 other_users_apps.update(other_data['apps'])
                 other_users_scenarios.update(other_data['scenarios'])
 
-        # 차집합을 통해 해당 사용자만 사용하는 고유 항목 찾기
+        # Find unique items for this user through set difference
         unique_to_user_apps = sorted(list(data['apps'] - other_users_apps))
         unique_to_user_scenarios = sorted(list(data['scenarios'] - other_users_scenarios))
 
-        # 고유 App들의 총 사용 횟수 계산
+        # Calculate total usage count of unique Apps
         unique_app_total_count = sum(data['app_counts'][app] for app in unique_to_user_apps)
         unique_scenario_total_count = sum(data['scenario_counts'][scenario] for scenario in unique_to_user_scenarios)
         
-        # 전체 데이터 대비 비율 계산
+        # Calculate percentage relative to total data
         total_count = data['total_count']
         app_percentage = (unique_app_total_count / total_count * 100) if total_count > 0 else 0
         scenario_percentage = (unique_scenario_total_count / total_count * 100) if total_count > 0 else 0
 
-        output_lines.append(f"\n  -- 사용자 '{user_id}' --\n")
-        output_lines.append(f"    - 이 사용자만 사용하는 App: {', '.join(unique_to_user_apps) if unique_to_user_apps else '없음'}\n")
+        output_lines.append(f"\n  -- User '{user_id}' --\n")
+        output_lines.append(f"    - Apps unique to this user: {', '.join(unique_to_user_apps) if unique_to_user_apps else 'None'}\n")
         if unique_to_user_apps:
-            output_lines.append(f"    - 데이터: {unique_app_total_count}개 ({app_percentage:.1f}%)\n")
-        output_lines.append(f"    - 이 사용자만 사용하는 Scenario: {', '.join(unique_to_user_scenarios) if unique_to_user_scenarios else '없음'}\n")
+            output_lines.append(f"    - Data: {unique_app_total_count} items ({app_percentage:.1f}%)\n")
+        output_lines.append(f"    - Scenarios unique to this user: {', '.join(unique_to_user_scenarios) if unique_to_user_scenarios else 'None'}\n")
         if unique_to_user_scenarios:
-            output_lines.append(f"    - 데이터: {unique_scenario_total_count}개 ({scenario_percentage:.1f}%)\n")
+            output_lines.append(f"    - Data: {unique_scenario_total_count} items ({scenario_percentage:.1f}%)\n")
 
     output_lines.append("\n----------------------------------------------------\n")
     
-    # 파일로 저장
+    # Save to file
     output_file = os.path.join("./survey_result.txt")
     with open(output_file, 'w', encoding='utf-8') as f:
         f.writelines(output_lines)
     
-    print(f"분석 결과가 '{output_file}'에 저장되었습니다.")
+    print(f"Analysis results saved to '{output_file}'.")
     
 if __name__ == "__main__":
-    # 스크립트가 실행되는 위치를 기준으로 데이터를 처리합니다.
-    # 다른 폴더를 지정하고 싶다면 아래 경로를 수정하세요.
+    # Process data based on the script execution location.
+    # Modify the paths below if you want to specify a different folder.
     process_survey_data('./dataset/fingertip-20k/1')
     process_survey_data('./dataset/fingertip-20k/2')
     process_survey_data('./dataset/fingertip-20k/3')

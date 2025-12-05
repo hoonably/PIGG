@@ -1,928 +1,928 @@
---- 전체 사용자 이용 패턴 분석 (./dataset/fingertip-20k/) ---
-
-분석 대상 사용자: 1, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 52, 53, 54, 55, 56, 57, 58, 59, 61, 62, 63, 64, 65, 66, 67, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 83, 86, 88, 89, 90, 91, 93, 94, 95, 96, 97, 99, 100
-
-[가장 많이 사용된 App] (사용자 수 기준)
-  - air.tv.douyu.android: 2명
-  - app.podcast.cosmos: 3명
-  - bin.mt.plus: 1명
-  - cc.forestapp: 2명
-  - cmb.pb: 2명
-  - cn.TuHu.android: 1명
-  - cn.cntvnews: 1명
-  - cn.com.bmac.nfc: 3명
-  - cn.com.langeasy.LangEasyLexis: 7명
-  - cn.com.yunma.school.app: 1명
-  - cn.comicup.apps.cppub: 1명
-  - cn.damai: 13명
-  - cn.dxy.idxyer: 1명
-  - cn.edu.pku.treehole: 1명
-  - cn.gov.lottery: 1명
-  - cn.gov.tax.its: 2명
-  - cn.kaiheila: 1명
-  - cn.ledongli.ldl: 9명
-  - cn.lunkr.android: 1명
-  - cn.milkycandy.objection: 1명
-  - cn.ticktick.task: 1명
-  - cn.unipus.ucampus.student: 1명
-  - cn.volvo.vcc: 1명
-  - cn.wenyu.bodian: 1명
-  - cn.wps.moffice_eng: 8명
-  - cn.xuexi.android: 7명
-  - com.MobileTicket: 38명
-  - com.Qunar: 2명
-  - com.able.wisdomtree: 1명
-  - com.accordion.analogcam.cn: 1명
-  - com.achievo.vipshop: 9명
-  - com.ai.obc.cbn.app: 1명
-  - com.alibaba.aliyun: 1명
-  - com.alibaba.android.rimet: 7명
-  - com.alibaba.wireless: 6명
-  - com.alicloud.databox: 1명
-  - com.alimama.moon: 1명
-  - com.aliyun.tongyi: 2명
-  - com.android.BBKClock: 6명
-  - com.android.bbkcalculator: 2명
-  - com.android.browser: 3명
-  - com.android.calendar: 7명
-  - com.android.camera: 2명
-  - com.android.chrome: 2명
-  - com.android.contacts: 2명
-  - com.android.deskclock: 14명
-  - com.android.email: 2명
-  - com.android.fileexplorer: 1명
-  - com.android.incallui: 1명
-  - com.android.launcher: 12명
-  - com.android.mms: 11명
-  - com.android.notes: 3명
-  - com.android.settings: 15명
-  - com.android.systemui: 10명
-  - com.android.thememanager: 1명
-  - com.android.vending: 2명
-  - com.anjuke.android.app: 1명
-  - com.antutu.ABenchMark: 3명
-  - com.autonavi.minimap: 57명
-  - com.badmintoncn.bbs: 1명
-  - com.baidu.BaiduMap: 12명
-  - com.baidu.baidutranslate: 5명
-  - com.baidu.duer.superapp: 1명
-  - com.baidu.homework: 1명
-  - com.baidu.netdisk: 8명
-  - com.baidu.newapp: 2명
-  - com.baidu.searchbox: 13명
-  - com.baidu.searchbox.lite: 2명
-  - com.baidu.tieba: 14명
-  - com.baidu.youavideo: 1명
-  - com.batiao.aiwrite: 1명
-  - com.bbk.appstore: 4명
-  - com.bbk.calendar: 3명
-  - com.bbk.launcher2: 8명
-  - com.bbk.theme: 1명
-  - com.beevle.xz.renxing.gdong: 1명
-  - com.bmcc.ms.ui: 1명
-  - com.boohee.one: 2명
-  - com.bwton.tjmetro: 1명
-  - com.byfen.market: 1명
-  - com.caidazq.dzhNew: 1명
-  - com.caing.news: 1명
-  - com.cainiao.wireless: 10명
-  - com.cat.readall: 1명
-  - com.cctv.yangshipin.app.androidp: 1명
-  - com.cdfsunrise.cdflehu: 1명
-  - com.cdsg.zgph: 1명
-  - com.cdzq.gst.android: 1명
-  - com.cebbank.mpoinx: 1명
-  - com.chaozh.iReaderFree: 1명
-  - com.chinamworld.bocmbci: 2명
-  - com.clover.daysmatter: 1명
-  - com.clx.xtb: 1명
-  - com.cmcc.cmvideo: 1명
-  - com.cmri.universalapp: 2명
-  - com.coderpage.mine: 1명
-  - com.coloros.alarmclock: 12명
-  - com.coloros.calculator: 2명
-  - com.coloros.calendar: 6명
-  - com.coloros.gallery3d: 5명
-  - com.coloros.note: 5명
-  - com.coloros.phonemanager: 3명
-  - com.coloros.weather2: 8명
-  - com.coolapk.market: 1명
-  - com.copymanga.app: 1명
-  - com.corp21cn.mail189: 1명
-  - com.csair.mbp: 1명
-  - com.ct.client: 1명
-  - com.cutv.shakeshakestglt: 1명
-  - com.daxiamx.bangumi.webs: 1명
-  - com.deepseek.chat: 30명
-  - com.denglin.duck: 1명
-  - com.dianping.v1: 27명
-  - com.didapinche.booking: 1명
-  - com.dongqiudi.news: 1명
-  - com.douban.frodo: 14명
-  - com.doudoubird.weather: 1명
-  - com.dragon.read: 12명
-  - com.duokan.phone.remotecontroller: 1명
-  - com.duolingo: 6명
-  - com.duowan.kiwi: 4명
-  - com.duozhuayu.dejavu: 1명
-  - com.dw.btime: 1명
-  - com.dz.hmjc: 1명
-  - com.eastmoney.android.berlin: 1명
-  - com.eastmoney.android.fund: 1명
-  - com.easy.abroad: 2명
-  - com.edu24ol.newclass: 1명
-  - com.eg.android.AlipayGphone: 22명
-  - com.entrobus.dreamlife: 1명
-  - com.eusoft.eshelper: 1명
-  - com.eusoft.eudic: 1명
-  - com.example.administrator.searchpicturetool: 1명
-  - com.example.fingertip: 16명
-  - com.example.musicclip: 1명
-  - com.example.raylink_flutter: 1명
-  - com.fenbi.android.servant: 1명
-  - com.fenbi.android.solar: 1명
-  - com.fileunzip.zxwknight: 1명
-  - com.flyersoft.moonreaderp: 1명
-  - com.gf.client: 1명
-  - com.github.kr328.clash: 2명
-  - com.gonlan.iplaymtg: 2명
-  - com.google.android.apps.translate: 1명
-  - com.google.android.googlequicksearchbox: 1명
-  - com.google.android.youtube: 2명
-  - com.gotokeep.keep: 6명
-  - com.greenpoint.android.mc10086.activity: 7명
-  - com.guanaitong: 1명
-  - com.guosen.android: 1명
-  - com.handsgo.jiakao.android: 1명
-  - com.hanweb.android.zhejiang.activity: 1명
-  - com.happyelements.AndroidAnimal: 1명
-  - com.hexin.android.futures: 1명
-  - com.hexin.plat.android: 2명
-  - com.heytap.browser: 5명
-  - com.heytap.market: 6명
-  - com.heytap.quicksearchbox: 1명
-  - com.hhk.hh10: 1명
-  - com.hicorenational.antifraud: 1명
-  - com.hihonor.android.launcher: 11명
-  - com.hihonor.android.totemweather: 3명
-  - com.hihonor.appmarket: 3명
-  - com.hihonor.baidu.browser: 3명
-  - com.hihonor.calculator: 2명
-  - com.hihonor.calendar: 3명
-  - com.hihonor.contacts: 1명
-  - com.hihonor.deskclock: 6명
-  - com.hihonor.hiboard: 1명
-  - com.hihonor.mms: 1명
-  - com.hihonor.photos: 2명
-  - com.hihonor.systemmanager: 1명
-  - com.hp.printercontrol: 1명
-  - com.hpbr.bosszhipin: 4명
-  - com.htinns: 1명
-  - com.huatu.handheld_huatu: 1명
-  - com.huawei.android.launcher: 36명
-  - com.huawei.android.thememanager: 1명
-  - com.huawei.android.totemweather: 24명
-  - com.huawei.appmarket: 17명
-  - com.huawei.browser: 8명
-  - com.huawei.calculator: 8명
-  - com.huawei.calendar: 5명
-  - com.huawei.camera: 1명
-  - com.huawei.contacts: 1명
-  - com.huawei.deskclock: 25명
-  - com.huawei.email: 1명
-  - com.huawei.filemanager: 2명
-  - com.huawei.health: 19명
-  - com.huawei.himovie: 2명
-  - com.huawei.hwireader: 1명
-  - com.huawei.hwread.dz: 5명
-  - com.huawei.music: 1명
-  - com.huawei.notepad: 7명
-  - com.huawei.ohos.inputmethod: 1명
-  - com.huawei.parentcontrol: 2명
-  - com.huawei.photos: 9명
-  - com.huawei.smarthome: 3명
-  - com.huawei.soundrecorder: 4명
-  - com.huawei.systemmanager: 4명
-  - com.huawei.videoeditor: 1명
-  - com.huawei.wallet: 1명
-  - com.hunantv.imgo.activity: 2명
-  - com.hundsun.qy.hospitalcloud.bj.xhhosp.hsyy: 1명
-  - com.hupu.games: 5명
-  - com.hupu.shihuo: 4명
-  - com.hypergryph.skland: 1명
-  - com.hzhu.m: 1명
-  - com.iflytek.elpmobile.marktool: 1명
-  - com.iflytek.xiaoxin: 1명
-  - com.iguopin.app: 1명
-  - com.instagram.android: 1명
-  - com.intsig.camscanner: 7명
-  - com.iqoo.powersaving: 2명
-  - com.iqoo.secure: 1명
-  - com.ixiaoma.xiningAndroid0971: 1명
-  - com.jdjdc.jdfastjdc: 1명
-  - com.jhyan.yan: 1명
-  - com.jingdong.app.mall: 49명
-  - com.jingyao.easybike: 4명
-  - com.jiongji.andriod.card: 2명
-  - com.jjwxc.reader: 2명
-  - com.job.android: 1명
-  - com.jstd.seconddog: 1명
-  - com.jx.cmcc.ict.ibelieve: 1명
-  - com.jym.gcmall: 1명
-  - com.jzyd.coupon: 1명
-  - com.kgbs.ticket: 1명
-  - com.kingagroot.kingdraw: 1명
-  - com.kingpoint.gmcchh: 1명
-  - com.kingsoft: 3명
-  - com.kmxs.reader: 3명
-  - com.koudai.weidian.buyer: 4명
-  - com.koudai.weishop: 1명
-  - com.ks.kaishustory: 1명
-  - com.kuaishou.nebula: 2명
-  - com.kuangxiangciweimao.novel: 2명
-  - com.kugou.android: 7명
-  - com.kugou.android.lite: 1명
-  - com.larus.nova: 8명
-  - com.lemon.lv: 5명
-  - com.lianjia.beike: 2명
-  - com.lingan.seeyou: 1명
-  - com.lingxigames.yuan.cn: 1명
-  - com.lion.market: 1명
-  - com.liulishuo.engzo: 1명
-  - com.lofter.android: 3명
-  - com.lolaage.tbulu.tools: 1명
-  - com.lqlc.mortgagecalculator: 1명
-  - com.lucky.luckyclient: 3명
-  - com.luna.music: 3명
-  - com.maidu.gkld: 1명
-  - com.manmanbuy.bijia: 2명
-  - com.max.xiaoheihe: 6명
-  - com.mc.acupoint_3d: 1명
-  - com.mcdonalds.gma.cn: 2명
-  - com.meitu.meiyancamera: 1명
-  - com.meitu.poster: 1명
-  - com.mfw.roadbook: 1명
-  - com.mi.health: 9명
-  - com.miHoYo.Yuanshen: 1명
-  - com.microsoft.emmx: 3명
-  - com.midea.ai.appliances: 1명
-  - com.midea.vm.washer: 2명
-  - com.mihoyo.hyperion: 6명
-  - com.mipay.wallet: 2명
-  - com.miui.calculator: 6명
-  - com.miui.fm: 1명
-  - com.miui.gallery: 5명
-  - com.miui.home: 17명
-  - com.miui.mediaeditor: 1명
-  - com.miui.notes: 4명
-  - com.miui.player: 1명
-  - com.miui.securitycenter: 3명
-  - com.miui.tsmclient: 1명
-  - com.miui.voiceassist: 1명
-  - com.miui.weather2: 9명
-  - com.moji.mjweather: 1명
-  - com.mooda.xqrj: 1명
-  - com.moonshot.kimichat: 5명
-  - com.moutai.mall: 1명
-  - com.mt.mtxx.mtxx: 4명
-  - com.nearme.gamecenter: 1명
-  - com.netease.buff: 2명
-  - com.netease.cloudmusic: 33명
-  - com.netease.gl: 1명
-  - com.netease.huajia: 1명
-  - com.netease.mail: 4명
-  - com.netease.mobimail: 1명
-  - com.netease.newsreader.activity: 1명
-  - com.nfdaily.nfplus: 1명
-  - com.nike.omega: 1명
-  - com.njh.biubiu: 1명
-  - com.nyafun: 1명
-  - com.oplus.games: 1명
-  - com.oplus.play: 1명
-  - com.oppo.launcher: 1명
-  - com.oray.sunlogin: 1명
-  - com.phoenix.read: 2명
-  - com.pingan.carowner: 3명
-  - com.plan.kot32.tomatotime: 1명
-  - com.podcast.podcasts: 1명
-  - com.positron_it.zlib: 1명
-  - com.psyone.brainmusic: 1명
-  - com.pupumall.customer: 1명
-  - com.pwrd.steam.esports: 2명
-  - com.qidian.QDReader: 9명
-  - com.qiyi.video: 2명
-  - com.qooapp.qoohelper: 1명
-  - com.qq.ac.android: 1명
-  - com.qq.qcloud: 1명
-  - com.quark.browser: 16명
-  - com.reading91.app: 1명
-  - com.realtech.xiaocan: 1명
-  - com.ruguoapp.jike: 1명
-  - com.rytong.ceair: 1명
-  - com.rytong.hnair: 1명
-  - com.samsung.android.calendar: 1명
-  - com.samsung.android.messaging: 1명
-  - com.sankuai.meituan: 59명
-  - com.sankuai.meituan.takeoutnew: 4명
-  - com.sankuai.movie: 3명
-  - com.sdo.sdaccountkey: 1명
-  - com.sdu.didi.psnger: 5명
-  - com.seblong.idream: 1명
-  - com.sec.android.app.clockpackage: 1명
-  - com.sec.android.app.launcher: 1명
-  - com.sec.android.app.sbrowser: 1명
-  - com.shanbay.sentence: 2명
-  - com.shark.jizhang: 2명
-  - com.shiqichuban.android: 1명
-  - com.shixiseng.activity: 1명
-  - com.shizhuang.duapp: 5명
-  - com.showstartfans.activity: 1명
-  - com.shuyou.book: 1명
-  - com.simshine.cn.aiothd: 1명
-  - com.sina.mail.free: 1명
-  - com.sina.weibo: 21명
-  - com.sinovatech.unicom.ui: 1명
-  - com.sixrpg.opalyer: 1명
-  - com.smile.gifmaker: 1명
-  - com.smzdm.client.android: 1명
-  - com.sobeycloud.wangjie.jygbdst: 1명
-  - com.sohu.inputmethod.sogou: 1명
-  - com.sohu.newsclient: 3명
-  - com.sonkwoapp: 1명
-  - com.soufun.app: 1명
-  - com.spotify.music: 2명
-  - com.ss.android.article.lite: 1명
-  - com.ss.android.article.news: 5명
-  - com.ss.android.auto: 3명
-  - com.ss.android.lark: 6명
-  - com.ss.android.ugc.aweme: 30명
-  - com.ss.android.ugc.aweme.lite: 3명
-  - com.ss.android.ugc.livelite: 2명
-  - com.starbucks.cn: 1명
-  - com.steampy.app: 1명
-  - com.supor.aiot: 1명
-  - com.taobao.idlefish: 28명
-  - com.taobao.litetao: 1명
-  - com.taobao.taobao: 61명
-  - com.taptap: 5명
-  - com.tencent.android.qqdownloader: 1명
-  - com.tencent.androidqqmail: 13명
-  - com.tencent.apps.valorant: 2명
-  - com.tencent.gamehelper.pg: 1명
-  - com.tencent.gamehelper.smoba: 1명
-  - com.tencent.hunyuan.app.chat: 6명
-  - com.tencent.karaoke: 2명
-  - com.tencent.map: 1명
-  - com.tencent.mm: 63명
-  - com.tencent.mobileqq: 21명
-  - com.tencent.mtt: 8명
-  - com.tencent.news: 1명
-  - com.tencent.qqlive: 7명
-  - com.tencent.qqmusic: 21명
-  - com.tencent.qt.qtl: 2명
-  - com.tencent.weishi: 1명
-  - com.tencent.wemeet.app: 7명
-  - com.tencent.weread: 9명
-  - com.tencent.wework: 10명
-  - com.tianqi2345: 1명
-  - com.tiantianlexue.student.yingyuxuexibaoeng: 1명
-  - com.tipsoon.android: 1명
-  - com.tmall.campus.and: 2명
-  - com.tmall.wireless: 3명
-  - com.tmri.app.main: 4명
-  - com.tongcheng.android: 1명
-  - com.transport.taojiyun: 1명
-  - com.twtapp: 1명
-  - com.tyky.guizhou.dangjian.party: 1명
-  - com.umetrip.android.msky.app: 5명
-  - com.unidy2002.thuinfo: 4명
-  - com.unionpay: 2명
-  - com.uu898.uuhavequality: 1명
-  - com.valvesoftware.android.steam.community: 1명
-  - com.vanyun.onetalk.app: 1명
-  - com.vgjump.jump: 1명
-  - com.videogo: 1명
-  - com.vivo.Tips: 1명
-  - com.vivo.ai.copilot: 3명
-  - com.vivo.browser: 3명
-  - com.vivo.gallery: 1명
-  - com.vivo.globalsearch: 1명
-  - com.vivo.health: 2명
-  - com.vivo.nightpearl: 1명
-  - com.vivo.pay: 1명
-  - com.vivo.space: 1명
-  - com.vivo.weather: 6명
-  - com.vmall.client: 1명
-  - com.vphonegaga.titan: 1명
-  - com.wdit.shrmtmh: 1명
-  - com.wegene.future: 1명
-  - com.weico.international: 2명
-  - com.whova.event: 1명
-  - com.wisedu.cpdaily: 1명
-  - com.wiwj.xiangyucustomer: 1명
-  - com.wuba: 1명
-  - com.wudaokou.hippo: 8명
-  - com.xiachufang: 2명
-  - com.xiaomi.market: 11명
-  - com.xiaomi.shop: 5명
-  - com.xiaomi.smarthome: 1명
-  - com.xiaomi.vipaccount: 2명
-  - com.xiaomi.youpin: 1명
-  - com.ximalaya.ting.android: 3명
-  - com.xingin.xhs: 65명
-  - com.xmcy.hykb: 1명
-  - com.xs.fm: 1명
-  - com.xs.fm.lite: 1명
-  - com.xt.retouch: 2명
-  - com.xtc.watch: 1명
-  - com.xuehai.response: 1명
-  - com.xunmeng.pinduoduo: 24명
-  - com.yaya.zone: 1명
-  - com.yek.android.kfc.activitys: 3명
-  - com.ygkj.chelaile.standard: 1명
-  - com.yhhy.whrhx.mi: 1명
-  - com.yipiao: 2명
-  - com.yitong.cd.mbank.android: 1명
-  - com.yongyou: 1명
-  - com.youdao.dict: 10명
-  - com.youdao.translator: 1명
-  - com.youku.phone: 3명
-  - com.youloft.daziplan: 1명
-  - com.youqi.miaomiao: 1명
-  - com.yumc.phsuperapp: 2명
-  - com.yuque.mobile.android.app: 1명
-  - com.yxt.phoenix: 1명
-  - com.zebra.ichess: 1명
-  - com.zhaopin.social: 1명
-  - com.zhihu.android: 33명
-  - com.zhihu.vip.android: 1명
-  - com.zhipuai.qingyan: 1명
-  - com.zlketang.mm: 1명
-  - com.zmzx.college.search: 1명
-  - com.zte.smarthome: 1명
-  - com.zzw.october: 2명
-  - ctrip.android.view: 23명
-  - enfc.metro: 2명
-  - im.xingzhe: 1명
-  - io.legado.play.release: 1명
-  - io.robertying.learnx: 2명
-  - jp.co.canon.ic.cameraconnect: 1명
-  - mark.via: 1명
-  - me.ele: 15명
-  - melandru.lonicera: 1명
-  - net.csdn.csdnplus: 4명
-  - net.researchgate.shellapp: 1명
-  - nutstore.android: 1명
-  - offershow.app: 1명
-  - org.geekbang.geekTime: 1명
-  - org.mozilla.firefox: 1명
-  - plus.H5A84F959: 1명
-  - rwy.baoan.netsupervisor: 1명
-  - sg.edu.nus.univus: 1명
-  - synjones.commerce.xjtu: 1명
-  - tech.echoing.kuril: 1명
-  - tv.acfundanmaku.video: 1명
-  - tv.danmaku.bili: 69명
-  - uni.UNIEB8DD7C: 1명
-  - vz.com: 2명
-
-[가장 많이 사용된 Scenario] (사용자 수 기준)
-  - 交通工具: 47명
-  - 他人住所: 1명
-  - 住所: 79명
-  - 停车场: 1명
-  - 其他: 4명
-  - 办公场所: 51명
-  - 医疗机构: 13명
-  - 商场: 34명
-  - 地下车库: 1명
-  - 城市街道: 38명
-  - 娱乐休闲场所: 41명
-  - 学校: 65명
-  - 小区楼底: 1명
-  - 小卖部: 1명
-  - 快递柜: 1명
-  - 快递柜附近: 1명
-  - 快递点: 1명
-  - 快递站: 1명
-  - 快递驿站: 1명
-  - 文艺场馆: 15명
-  - 旅店: 1명
-  - 电梯: 1명
-  - 自然户外: 31명
-  - 运动场馆: 27명
-  - 银行: 1명
-  - 餐饮场所: 57명
-  - 驿站: 1명
-  - 高铁站: 2명
-
-[사용자별 고유 사용 항목]
-
-  -- 사용자 '1' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '3' --
-    - 이 사용자만 사용하는 App: com.bmcc.ms.ui, com.coderpage.mine, com.koudai.weishop
-    - 데이터: 27개 (11.4%)
-    - 이 사용자만 사용하는 Scenario: 快递站
-    - 데이터: 11개 (4.7%)
-
-  -- 사용자 '4' --
-    - 이 사용자만 사용하는 App: com.jstd.seconddog, net.researchgate.shellapp
-    - 데이터: 2개 (1.5%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '5' --
-    - 이 사용자만 사용하는 App: com.bbk.theme, com.iqoo.secure, com.lqlc.mortgagecalculator, com.vivo.Tips, com.vivo.nightpearl, com.vivo.space
-    - 데이터: 29개 (9.4%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '6' --
-    - 이 사용자만 사용하는 App: com.showstartfans.activity
-    - 데이터: 3개 (1.4%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '9' --
-    - 이 사용자만 사용하는 App: synjones.commerce.xjtu
-    - 데이터: 4개 (2.4%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '10' --
-    - 이 사용자만 사용하는 App: com.positron_it.zlib, com.qq.ac.android, im.xingzhe
-    - 데이터: 9개 (3.0%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '11' --
-    - 이 사용자만 사용하는 App: com.ai.obc.cbn.app
-    - 데이터: 1개 (1.7%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '12' --
-    - 이 사용자만 사용하는 App: cn.lunkr.android, com.bwton.tjmetro, com.huawei.camera, com.twtapp
-    - 데이터: 8개 (5.8%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '13' --
-    - 이 사용자만 사용하는 App: com.cmcc.cmvideo, com.example.raylink_flutter, com.yuque.mobile.android.app, offershow.app
-    - 데이터: 14개 (4.1%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '14' --
-    - 이 사용자만 사용하는 App: cn.dxy.idxyer, com.happyelements.AndroidAnimal, com.jx.cmcc.ict.ibelieve, com.mc.acupoint_3d, com.nearme.gamecenter, com.oplus.games, com.oplus.play, com.tencent.map, uni.UNIEB8DD7C
-    - 데이터: 17개 (15.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '15' --
-    - 이 사용자만 사용하는 App: com.meitu.poster, com.oppo.launcher, com.shuyou.book, mark.via
-    - 데이터: 18개 (18.9%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '16' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '17' --
-    - 이 사용자만 사용하는 App: com.cdfsunrise.cdflehu, com.doudoubird.weather, com.huawei.android.thememanager, com.nike.omega, com.starbucks.cn, com.tencent.gamehelper.pg
-    - 데이터: 16개 (6.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '18' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '19' --
-    - 이 사용자만 사용하는 App: com.instagram.android, com.mfw.roadbook, com.valvesoftware.android.steam.community
-    - 데이터: 4개 (1.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '21' --
-    - 이 사용자만 사용하는 App: com.accordion.analogcam.cn, com.baidu.youavideo, com.mooda.xqrj, com.wisedu.cpdaily
-    - 데이터: 5개 (2.0%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '22' --
-    - 이 사용자만 사용하는 App: com.anjuke.android.app, com.wuba, io.legado.play.release
-    - 데이터: 5개 (2.0%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '23' --
-    - 이 사용자만 사용하는 App: com.duozhuayu.dejavu
-    - 데이터: 1개 (0.4%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '24' --
-    - 이 사용자만 사용하는 App: com.xiaomi.smarthome, com.xiaomi.youpin
-    - 데이터: 13개 (5.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '25' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '26' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '27' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '28' --
-    - 이 사용자만 사용하는 App: com.csair.mbp, com.dongqiudi.news, com.kgbs.ticket, com.lolaage.tbulu.tools, com.pupumall.customer, com.rytong.hnair, com.zhipuai.qingyan
-    - 데이터: 35개 (18.0%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '29' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '30' --
-    - 이 사용자만 사용하는 App: com.corp21cn.mail189, com.ct.client, com.edu24ol.newclass, com.huawei.music, com.huawei.videoeditor, com.sobeycloud.wangjie.jygbdst, com.taobao.litetao, com.tencent.android.qqdownloader, com.tencent.news, com.tencent.weishi, com.vmall.client, com.zhaopin.social
-    - 데이터: 27개 (22.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '31' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '32' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '34' --
-    - 이 사용자만 사용하는 App: com.whova.event
-    - 데이터: 1개 (0.7%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '36' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '37' --
-    - 이 사용자만 사용하는 App: com.android.incallui, com.google.android.apps.translate, com.google.android.googlequicksearchbox
-    - 데이터: 3개 (1.1%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '38' --
-    - 이 사용자만 사용하는 App: com.eusoft.eshelper
-    - 데이터: 1개 (0.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '39' --
-    - 이 사용자만 사용하는 App: com.hundsun.qy.hospitalcloud.bj.xhhosp.hsyy, com.rytong.ceair, com.vgjump.jump, com.wegene.future
-    - 데이터: 9개 (4.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '40' --
-    - 이 사용자만 사용하는 App: com.hihonor.systemmanager, com.shixiseng.activity
-    - 데이터: 13개 (3.6%)
-    - 이 사용자만 사용하는 Scenario: 他人住所
-    - 데이터: 1개 (0.3%)
-
-  -- 사용자 '41' --
-    - 이 사용자만 사용하는 App: com.netease.mobimail
-    - 데이터: 1개 (0.5%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '42' --
-    - 이 사용자만 사용하는 App: com.htinns, melandru.lonicera
-    - 데이터: 36개 (10.9%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '43' --
-    - 이 사용자만 사용하는 App: sg.edu.nus.univus
-    - 데이터: 1개 (1.2%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '44' --
-    - 이 사용자만 사용하는 App: cn.wenyu.bodian, com.flyersoft.moonreaderp, com.miui.player, com.miui.voiceassist, com.tencent.gamehelper.smoba
-    - 데이터: 17개 (5.9%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '45' --
-    - 이 사용자만 사용하는 App: cn.edu.pku.treehole
-    - 데이터: 3개 (1.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '46' --
-    - 이 사용자만 사용하는 App: cn.comicup.apps.cppub, cn.milkycandy.objection, cn.ticktick.task, com.chaozh.iReaderFree, com.meitu.meiyancamera, com.netease.huajia
-    - 데이터: 18개 (6.4%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '47' --
-    - 이 사용자만 사용하는 App: com.denglin.duck, com.jhyan.yan, com.lingxigames.yuan.cn, com.psyone.brainmusic
-    - 데이터: 44개 (12.7%)
-    - 이 사용자만 사용하는 Scenario: 快递柜, 快递柜附近, 快递点
-    - 데이터: 4개 (1.2%)
-
-  -- 사용자 '48' --
-    - 이 사용자만 사용하는 App: com.liulishuo.engzo
-    - 데이터: 1개 (1.9%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '49' --
-    - 이 사용자만 사용하는 App: com.hihonor.mms, com.youloft.daziplan, com.youqi.miaomiao, tech.echoing.kuril
-    - 데이터: 5개 (2.7%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '51' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '52' --
-    - 이 사용자만 사용하는 App: com.huawei.contacts, com.huawei.wallet
-    - 데이터: 4개 (1.7%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '53' --
-    - 이 사용자만 사용하는 App: org.mozilla.firefox
-    - 데이터: 69개 (42.6%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '54' --
-    - 이 사용자만 사용하는 App: cn.unipus.ucampus.student, com.able.wisdomtree, com.uu898.uuhavequality
-    - 데이터: 4개 (1.1%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '55' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '56' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 银行
-    - 데이터: 1개 (0.3%)
-
-  -- 사용자 '57' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '58' --
-    - 이 사용자만 사용하는 App: com.jdjdc.jdfastjdc
-    - 데이터: 4개 (8.2%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '59' --
-    - 이 사용자만 사용하는 App: cn.com.yunma.school.app, cn.kaiheila, com.eusoft.eudic, com.example.administrator.searchpicturetool, com.hhk.hh10, com.jzyd.coupon, com.netease.gl, com.nyafun, com.qooapp.qoohelper, com.sdo.sdaccountkey, com.sohu.inputmethod.sogou, com.sonkwoapp, com.steampy.app, tv.acfundanmaku.video
-    - 데이터: 29개 (8.1%)
-    - 이 사용자만 사용하는 Scenario: 快递驿站, 驿站
-    - 데이터: 4개 (1.1%)
-
-  -- 사용자 '61' --
-    - 이 사용자만 사용하는 App: com.copymanga.app, com.daxiamx.bangumi.webs, com.miHoYo.Yuanshen
-    - 데이터: 9개 (1.7%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '62' --
-    - 이 사용자만 사용하는 App: com.hihonor.hiboard, com.ixiaoma.xiningAndroid0971, com.yxt.phoenix
-    - 데이터: 13개 (4.9%)
-    - 이 사용자만 사용하는 Scenario: 小区楼底
-    - 데이터: 1개 (0.4%)
-
-  -- 사용자 '63' --
-    - 이 사용자만 사용하는 App: com.huawei.email, com.sina.mail.free
-    - 데이터: 3개 (1.2%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '64' --
-    - 이 사용자만 사용하는 App: com.caing.news, com.podcast.podcasts, com.vivo.globalsearch
-    - 데이터: 15개 (10.8%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '65' --
-    - 이 사용자만 사용하는 App: com.badmintoncn.bbs, com.kugou.android.lite, com.netease.newsreader.activity
-    - 데이터: 51개 (16.7%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '66' --
-    - 이 사용자만 사용하는 App: com.cctv.yangshipin.app.androidp, com.clover.daysmatter, com.plan.kot32.tomatotime
-    - 데이터: 4개 (4.0%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '67' --
-    - 이 사용자만 사용하는 App: com.hypergryph.skland
-    - 데이터: 7개 (2.9%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '69' --
-    - 이 사용자만 사용하는 App: com.realtech.xiaocan
-    - 데이터: 4개 (2.5%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '70' --
-    - 이 사용자만 사용하는 App: cn.gov.lottery, com.cdsg.zgph, com.didapinche.booking, com.seblong.idream, com.vivo.gallery, com.vivo.pay, com.yitong.cd.mbank.android, com.zlketang.mm
-    - 데이터: 29개 (9.8%)
-    - 이 사용자만 사용하는 Scenario: 停车场, 小卖部, 电梯
-    - 데이터: 5개 (1.7%)
-
-  -- 사용자 '71' --
-    - 이 사용자만 사용하는 App: com.fenbi.android.servant, com.maidu.gkld, com.tipsoon.android
-    - 데이터: 18개 (5.2%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '72' --
-    - 이 사용자만 사용하는 App: com.iguopin.app, com.miui.tsmclient
-    - 데이터: 2개 (1.1%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '73' --
-    - 이 사용자만 사용하는 App: com.alimama.moon, com.cat.readall, com.example.musicclip, com.hexin.android.futures, com.hp.printercontrol, com.midea.ai.appliances, com.xtc.watch, com.zhihu.vip.android, jp.co.canon.ic.cameraconnect, plus.H5A84F959
-    - 데이터: 37개 (8.5%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '74' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '75' --
-    - 이 사용자만 사용하는 App: com.samsung.android.calendar, com.samsung.android.messaging, com.sec.android.app.clockpackage, com.sec.android.app.launcher, com.sec.android.app.sbrowser, com.supor.aiot
-    - 데이터: 91개 (22.5%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '76' --
-    - 이 사용자만 사용하는 App: com.huatu.handheld_huatu
-    - 데이터: 5개 (1.5%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '77' --
-    - 이 사용자만 사용하는 App: com.caidazq.dzhNew, com.cdzq.gst.android, com.eastmoney.android.fund, com.xs.fm.lite
-    - 데이터: 76개 (16.9%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '79' --
-    - 이 사용자만 사용하는 App: com.dz.hmjc, com.smile.gifmaker
-    - 데이터: 6개 (6.5%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '80' --
-    - 이 사용자만 사용하는 App: com.baidu.homework, com.batiao.aiwrite, com.clx.xtb, com.ks.kaishustory, com.reading91.app, com.tiantianlexue.student.yingyuxuexibaoeng, com.xs.fm
-    - 데이터: 65개 (15.7%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '83' --
-    - 이 사용자만 사용하는 App: com.handsgo.jiakao.android, com.moji.mjweather
-    - 데이터: 14개 (10.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '86' --
-    - 이 사용자만 사용하는 App: cn.cntvnews, cn.volvo.vcc, com.moutai.mall, com.tianqi2345, com.tyky.guizhou.dangjian.party
-    - 데이터: 68개 (22.8%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '88' --
-    - 이 사용자만 사용하는 App: com.cebbank.mpoinx, com.eastmoney.android.berlin, com.huawei.ohos.inputmethod, com.simshine.cn.aiothd, com.smzdm.client.android
-    - 데이터: 71개 (23.8%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '89' --
-    - 이 사용자만 사용하는 App: cn.TuHu.android, com.alicloud.databox, com.dw.btime, com.hanweb.android.zhejiang.activity, com.hzhu.m, com.iflytek.elpmobile.marktool, com.iflytek.xiaoxin, com.lingan.seeyou, com.ruguoapp.jike, com.wiwj.xiangyucustomer, com.xuehai.response
-    - 데이터: 27개 (11.8%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '90' --
-    - 이 사용자만 사용하는 App: com.youdao.translator
-    - 데이터: 3개 (5.8%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '91' --
-    - 이 사용자만 사용하는 App: com.duokan.phone.remotecontroller, com.fenbi.android.solar, com.oray.sunlogin, com.yhhy.whrhx.mi, com.zebra.ichess, com.zmzx.college.search
-    - 데이터: 9개 (4.2%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '93' --
-    - 이 사용자만 사용하는 App: com.soufun.app, com.transport.taojiyun, com.videogo, nutstore.android
-    - 데이터: 37개 (11.3%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '94' --
-    - 이 사용자만 사용하는 App: com.miui.mediaeditor
-    - 데이터: 4개 (0.8%)
-    - 이 사용자만 사용하는 Scenario: 地下车库, 旅店
-    - 데이터: 5개 (1.0%)
-
-  -- 사용자 '95' --
-    - 이 사용자만 사용하는 App: com.guosen.android, com.huawei.hwireader
-    - 데이터: 31개 (7.6%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '96' --
-    - 이 사용자만 사용하는 App: com.cutv.shakeshakestglt, com.entrobus.dreamlife, com.gf.client, com.hicorenational.antifraud, com.hihonor.contacts, com.kingpoint.gmcchh, com.nfdaily.nfplus, com.shiqichuban.android, com.ss.android.article.lite, com.vanyun.onetalk.app
-    - 데이터: 140개 (27.9%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '97' --
-    - 이 사용자만 사용하는 App: com.alibaba.aliyun, com.baidu.duer.superapp, com.guanaitong, com.heytap.quicksearchbox, com.sinovatech.unicom.ui, com.wdit.shrmtmh, com.yaya.zone, com.yongyou, com.zte.smarthome, org.geekbang.geekTime
-    - 데이터: 47개 (11.8%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '99' --
-    - 이 사용자만 사용하는 App: bin.mt.plus, com.android.fileexplorer, com.android.thememanager, com.beevle.xz.renxing.gdong, com.byfen.market, com.coolapk.market, com.fileunzip.zxwknight, com.job.android, com.jym.gcmall, com.kingagroot.kingdraw, com.lion.market, com.miui.fm, com.njh.biubiu, com.qq.qcloud, com.sixrpg.opalyer, com.tongcheng.android, com.vphonegaga.titan, com.xmcy.hykb, com.ygkj.chelaile.standard, rwy.baoan.netsupervisor
-    - 데이터: 30개 (11.7%)
-    - 이 사용자만 사용하는 Scenario: 없음
-
-  -- 사용자 '100' --
-    - 이 사용자만 사용하는 App: 없음
-    - 이 사용자만 사용하는 Scenario: 없음
+--- Overall User Usage Pattern Analysis (./dataset/fingertip-20k/) ---
+
+Analyzed users: 1, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 52, 53, 54, 55, 56, 57, 58, 59, 61, 62, 63, 64, 65, 66, 67, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 83, 86, 88, 89, 90, 91, 93, 94, 95, 96, 97, 99, 100
+
+[Most Used Apps] (by number of users)
+  - air.tv.douyu.android: 2 users
+  - app.podcast.cosmos: 3 users
+  - bin.mt.plus: 1 users
+  - cc.forestapp: 2 users
+  - cmb.pb: 2 users
+  - cn.TuHu.android: 1 users
+  - cn.cntvnews: 1 users
+  - cn.com.bmac.nfc: 3 users
+  - cn.com.langeasy.LangEasyLexis: 7 users
+  - cn.com.yunma.school.app: 1 users
+  - cn.comicup.apps.cppub: 1 users
+  - cn.damai: 13 users
+  - cn.dxy.idxyer: 1 users
+  - cn.edu.pku.treehole: 1 users
+  - cn.gov.lottery: 1 users
+  - cn.gov.tax.its: 2 users
+  - cn.kaiheila: 1 users
+  - cn.ledongli.ldl: 9 users
+  - cn.lunkr.android: 1 users
+  - cn.milkycandy.objection: 1 users
+  - cn.ticktick.task: 1 users
+  - cn.unipus.ucampus.student: 1 users
+  - cn.volvo.vcc: 1 users
+  - cn.wenyu.bodian: 1 users
+  - cn.wps.moffice_eng: 8 users
+  - cn.xuexi.android: 7 users
+  - com.MobileTicket: 38 users
+  - com.Qunar: 2 users
+  - com.able.wisdomtree: 1 users
+  - com.accordion.analogcam.cn: 1 users
+  - com.achievo.vipshop: 9 users
+  - com.ai.obc.cbn.app: 1 users
+  - com.alibaba.aliyun: 1 users
+  - com.alibaba.android.rimet: 7 users
+  - com.alibaba.wireless: 6 users
+  - com.alicloud.databox: 1 users
+  - com.alimama.moon: 1 users
+  - com.aliyun.tongyi: 2 users
+  - com.android.BBKClock: 6 users
+  - com.android.bbkcalculator: 2 users
+  - com.android.browser: 3 users
+  - com.android.calendar: 7 users
+  - com.android.camera: 2 users
+  - com.android.chrome: 2 users
+  - com.android.contacts: 2 users
+  - com.android.deskclock: 14 users
+  - com.android.email: 2 users
+  - com.android.fileexplorer: 1 users
+  - com.android.incallui: 1 users
+  - com.android.launcher: 12 users
+  - com.android.mms: 11 users
+  - com.android.notes: 3 users
+  - com.android.settings: 15 users
+  - com.android.systemui: 10 users
+  - com.android.thememanager: 1 users
+  - com.android.vending: 2 users
+  - com.anjuke.android.app: 1 users
+  - com.antutu.ABenchMark: 3 users
+  - com.autonavi.minimap: 57 users
+  - com.badmintoncn.bbs: 1 users
+  - com.baidu.BaiduMap: 12 users
+  - com.baidu.baidutranslate: 5 users
+  - com.baidu.duer.superapp: 1 users
+  - com.baidu.homework: 1 users
+  - com.baidu.netdisk: 8 users
+  - com.baidu.newapp: 2 users
+  - com.baidu.searchbox: 13 users
+  - com.baidu.searchbox.lite: 2 users
+  - com.baidu.tieba: 14 users
+  - com.baidu.youavideo: 1 users
+  - com.batiao.aiwrite: 1 users
+  - com.bbk.appstore: 4 users
+  - com.bbk.calendar: 3 users
+  - com.bbk.launcher2: 8 users
+  - com.bbk.theme: 1 users
+  - com.beevle.xz.renxing.gdong: 1 users
+  - com.bmcc.ms.ui: 1 users
+  - com.boohee.one: 2 users
+  - com.bwton.tjmetro: 1 users
+  - com.byfen.market: 1 users
+  - com.caidazq.dzhNew: 1 users
+  - com.caing.news: 1 users
+  - com.cainiao.wireless: 10 users
+  - com.cat.readall: 1 users
+  - com.cctv.yangshipin.app.androidp: 1 users
+  - com.cdfsunrise.cdflehu: 1 users
+  - com.cdsg.zgph: 1 users
+  - com.cdzq.gst.android: 1 users
+  - com.cebbank.mpoinx: 1 users
+  - com.chaozh.iReaderFree: 1 users
+  - com.chinamworld.bocmbci: 2 users
+  - com.clover.daysmatter: 1 users
+  - com.clx.xtb: 1 users
+  - com.cmcc.cmvideo: 1 users
+  - com.cmri.universalapp: 2 users
+  - com.coderpage.mine: 1 users
+  - com.coloros.alarmclock: 12 users
+  - com.coloros.calculator: 2 users
+  - com.coloros.calendar: 6 users
+  - com.coloros.gallery3d: 5 users
+  - com.coloros.note: 5 users
+  - com.coloros.phonemanager: 3 users
+  - com.coloros.weather2: 8 users
+  - com.coolapk.market: 1 users
+  - com.copymanga.app: 1 users
+  - com.corp21cn.mail189: 1 users
+  - com.csair.mbp: 1 users
+  - com.ct.client: 1 users
+  - com.cutv.shakeshakestglt: 1 users
+  - com.daxiamx.bangumi.webs: 1 users
+  - com.deepseek.chat: 30 users
+  - com.denglin.duck: 1 users
+  - com.dianping.v1: 27 users
+  - com.didapinche.booking: 1 users
+  - com.dongqiudi.news: 1 users
+  - com.douban.frodo: 14 users
+  - com.doudoubird.weather: 1 users
+  - com.dragon.read: 12 users
+  - com.duokan.phone.remotecontroller: 1 users
+  - com.duolingo: 6 users
+  - com.duowan.kiwi: 4 users
+  - com.duozhuayu.dejavu: 1 users
+  - com.dw.btime: 1 users
+  - com.dz.hmjc: 1 users
+  - com.eastmoney.android.berlin: 1 users
+  - com.eastmoney.android.fund: 1 users
+  - com.easy.abroad: 2 users
+  - com.edu24ol.newclass: 1 users
+  - com.eg.android.AlipayGphone: 22 users
+  - com.entrobus.dreamlife: 1 users
+  - com.eusoft.eshelper: 1 users
+  - com.eusoft.eudic: 1 users
+  - com.example.administrator.searchpicturetool: 1 users
+  - com.example.fingertip: 16 users
+  - com.example.musicclip: 1 users
+  - com.example.raylink_flutter: 1 users
+  - com.fenbi.android.servant: 1 users
+  - com.fenbi.android.solar: 1 users
+  - com.fileunzip.zxwknight: 1 users
+  - com.flyersoft.moonreaderp: 1 users
+  - com.gf.client: 1 users
+  - com.github.kr328.clash: 2 users
+  - com.gonlan.iplaymtg: 2 users
+  - com.google.android.apps.translate: 1 users
+  - com.google.android.googlequicksearchbox: 1 users
+  - com.google.android.youtube: 2 users
+  - com.gotokeep.keep: 6 users
+  - com.greenpoint.android.mc10086.activity: 7 users
+  - com.guanaitong: 1 users
+  - com.guosen.android: 1 users
+  - com.handsgo.jiakao.android: 1 users
+  - com.hanweb.android.zhejiang.activity: 1 users
+  - com.happyelements.AndroidAnimal: 1 users
+  - com.hexin.android.futures: 1 users
+  - com.hexin.plat.android: 2 users
+  - com.heytap.browser: 5 users
+  - com.heytap.market: 6 users
+  - com.heytap.quicksearchbox: 1 users
+  - com.hhk.hh10: 1 users
+  - com.hicorenational.antifraud: 1 users
+  - com.hihonor.android.launcher: 11 users
+  - com.hihonor.android.totemweather: 3 users
+  - com.hihonor.appmarket: 3 users
+  - com.hihonor.baidu.browser: 3 users
+  - com.hihonor.calculator: 2 users
+  - com.hihonor.calendar: 3 users
+  - com.hihonor.contacts: 1 users
+  - com.hihonor.deskclock: 6 users
+  - com.hihonor.hiboard: 1 users
+  - com.hihonor.mms: 1 users
+  - com.hihonor.photos: 2 users
+  - com.hihonor.systemmanager: 1 users
+  - com.hp.printercontrol: 1 users
+  - com.hpbr.bosszhipin: 4 users
+  - com.htinns: 1 users
+  - com.huatu.handheld_huatu: 1 users
+  - com.huawei.android.launcher: 36 users
+  - com.huawei.android.thememanager: 1 users
+  - com.huawei.android.totemweather: 24 users
+  - com.huawei.appmarket: 17 users
+  - com.huawei.browser: 8 users
+  - com.huawei.calculator: 8 users
+  - com.huawei.calendar: 5 users
+  - com.huawei.camera: 1 users
+  - com.huawei.contacts: 1 users
+  - com.huawei.deskclock: 25 users
+  - com.huawei.email: 1 users
+  - com.huawei.filemanager: 2 users
+  - com.huawei.health: 19 users
+  - com.huawei.himovie: 2 users
+  - com.huawei.hwireader: 1 users
+  - com.huawei.hwread.dz: 5 users
+  - com.huawei.music: 1 users
+  - com.huawei.notepad: 7 users
+  - com.huawei.ohos.inputmethod: 1 users
+  - com.huawei.parentcontrol: 2 users
+  - com.huawei.photos: 9 users
+  - com.huawei.smarthome: 3 users
+  - com.huawei.soundrecorder: 4 users
+  - com.huawei.systemmanager: 4 users
+  - com.huawei.videoeditor: 1 users
+  - com.huawei.wallet: 1 users
+  - com.hunantv.imgo.activity: 2 users
+  - com.hundsun.qy.hospitalcloud.bj.xhhosp.hsyy: 1 users
+  - com.hupu.games: 5 users
+  - com.hupu.shihuo: 4 users
+  - com.hypergryph.skland: 1 users
+  - com.hzhu.m: 1 users
+  - com.iflytek.elpmobile.marktool: 1 users
+  - com.iflytek.xiaoxin: 1 users
+  - com.iguopin.app: 1 users
+  - com.instagram.android: 1 users
+  - com.intsig.camscanner: 7 users
+  - com.iqoo.powersaving: 2 users
+  - com.iqoo.secure: 1 users
+  - com.ixiaoma.xiningAndroid0971: 1 users
+  - com.jdjdc.jdfastjdc: 1 users
+  - com.jhyan.yan: 1 users
+  - com.jingdong.app.mall: 49 users
+  - com.jingyao.easybike: 4 users
+  - com.jiongji.andriod.card: 2 users
+  - com.jjwxc.reader: 2 users
+  - com.job.android: 1 users
+  - com.jstd.seconddog: 1 users
+  - com.jx.cmcc.ict.ibelieve: 1 users
+  - com.jym.gcmall: 1 users
+  - com.jzyd.coupon: 1 users
+  - com.kgbs.ticket: 1 users
+  - com.kingagroot.kingdraw: 1 users
+  - com.kingpoint.gmcchh: 1 users
+  - com.kingsoft: 3 users
+  - com.kmxs.reader: 3 users
+  - com.koudai.weidian.buyer: 4 users
+  - com.koudai.weishop: 1 users
+  - com.ks.kaishustory: 1 users
+  - com.kuaishou.nebula: 2 users
+  - com.kuangxiangciweimao.novel: 2 users
+  - com.kugou.android: 7 users
+  - com.kugou.android.lite: 1 users
+  - com.larus.nova: 8 users
+  - com.lemon.lv: 5 users
+  - com.lianjia.beike: 2 users
+  - com.lingan.seeyou: 1 users
+  - com.lingxigames.yuan.cn: 1 users
+  - com.lion.market: 1 users
+  - com.liulishuo.engzo: 1 users
+  - com.lofter.android: 3 users
+  - com.lolaage.tbulu.tools: 1 users
+  - com.lqlc.mortgagecalculator: 1 users
+  - com.lucky.luckyclient: 3 users
+  - com.luna.music: 3 users
+  - com.maidu.gkld: 1 users
+  - com.manmanbuy.bijia: 2 users
+  - com.max.xiaoheihe: 6 users
+  - com.mc.acupoint_3d: 1 users
+  - com.mcdonalds.gma.cn: 2 users
+  - com.meitu.meiyancamera: 1 users
+  - com.meitu.poster: 1 users
+  - com.mfw.roadbook: 1 users
+  - com.mi.health: 9 users
+  - com.miHoYo.Yuanshen: 1 users
+  - com.microsoft.emmx: 3 users
+  - com.midea.ai.appliances: 1 users
+  - com.midea.vm.washer: 2 users
+  - com.mihoyo.hyperion: 6 users
+  - com.mipay.wallet: 2 users
+  - com.miui.calculator: 6 users
+  - com.miui.fm: 1 users
+  - com.miui.gallery: 5 users
+  - com.miui.home: 17 users
+  - com.miui.mediaeditor: 1 users
+  - com.miui.notes: 4 users
+  - com.miui.player: 1 users
+  - com.miui.securitycenter: 3 users
+  - com.miui.tsmclient: 1 users
+  - com.miui.voiceassist: 1 users
+  - com.miui.weather2: 9 users
+  - com.moji.mjweather: 1 users
+  - com.mooda.xqrj: 1 users
+  - com.moonshot.kimichat: 5 users
+  - com.moutai.mall: 1 users
+  - com.mt.mtxx.mtxx: 4 users
+  - com.nearme.gamecenter: 1 users
+  - com.netease.buff: 2 users
+  - com.netease.cloudmusic: 33 users
+  - com.netease.gl: 1 users
+  - com.netease.huajia: 1 users
+  - com.netease.mail: 4 users
+  - com.netease.mobimail: 1 users
+  - com.netease.newsreader.activity: 1 users
+  - com.nfdaily.nfplus: 1 users
+  - com.nike.omega: 1 users
+  - com.njh.biubiu: 1 users
+  - com.nyafun: 1 users
+  - com.oplus.games: 1 users
+  - com.oplus.play: 1 users
+  - com.oppo.launcher: 1 users
+  - com.oray.sunlogin: 1 users
+  - com.phoenix.read: 2 users
+  - com.pingan.carowner: 3 users
+  - com.plan.kot32.tomatotime: 1 users
+  - com.podcast.podcasts: 1 users
+  - com.positron_it.zlib: 1 users
+  - com.psyone.brainmusic: 1 users
+  - com.pupumall.customer: 1 users
+  - com.pwrd.steam.esports: 2 users
+  - com.qidian.QDReader: 9 users
+  - com.qiyi.video: 2 users
+  - com.qooapp.qoohelper: 1 users
+  - com.qq.ac.android: 1 users
+  - com.qq.qcloud: 1 users
+  - com.quark.browser: 16 users
+  - com.reading91.app: 1 users
+  - com.realtech.xiaocan: 1 users
+  - com.ruguoapp.jike: 1 users
+  - com.rytong.ceair: 1 users
+  - com.rytong.hnair: 1 users
+  - com.samsung.android.calendar: 1 users
+  - com.samsung.android.messaging: 1 users
+  - com.sankuai.meituan: 59 users
+  - com.sankuai.meituan.takeoutnew: 4 users
+  - com.sankuai.movie: 3 users
+  - com.sdo.sdaccountkey: 1 users
+  - com.sdu.didi.psnger: 5 users
+  - com.seblong.idream: 1 users
+  - com.sec.android.app.clockpackage: 1 users
+  - com.sec.android.app.launcher: 1 users
+  - com.sec.android.app.sbrowser: 1 users
+  - com.shanbay.sentence: 2 users
+  - com.shark.jizhang: 2 users
+  - com.shiqichuban.android: 1 users
+  - com.shixiseng.activity: 1 users
+  - com.shizhuang.duapp: 5 users
+  - com.showstartfans.activity: 1 users
+  - com.shuyou.book: 1 users
+  - com.simshine.cn.aiothd: 1 users
+  - com.sina.mail.free: 1 users
+  - com.sina.weibo: 21 users
+  - com.sinovatech.unicom.ui: 1 users
+  - com.sixrpg.opalyer: 1 users
+  - com.smile.gifmaker: 1 users
+  - com.smzdm.client.android: 1 users
+  - com.sobeycloud.wangjie.jygbdst: 1 users
+  - com.sohu.inputmethod.sogou: 1 users
+  - com.sohu.newsclient: 3 users
+  - com.sonkwoapp: 1 users
+  - com.soufun.app: 1 users
+  - com.spotify.music: 2 users
+  - com.ss.android.article.lite: 1 users
+  - com.ss.android.article.news: 5 users
+  - com.ss.android.auto: 3 users
+  - com.ss.android.lark: 6 users
+  - com.ss.android.ugc.aweme: 30 users
+  - com.ss.android.ugc.aweme.lite: 3 users
+  - com.ss.android.ugc.livelite: 2 users
+  - com.starbucks.cn: 1 users
+  - com.steampy.app: 1 users
+  - com.supor.aiot: 1 users
+  - com.taobao.idlefish: 28 users
+  - com.taobao.litetao: 1 users
+  - com.taobao.taobao: 61 users
+  - com.taptap: 5 users
+  - com.tencent.android.qqdownloader: 1 users
+  - com.tencent.androidqqmail: 13 users
+  - com.tencent.apps.valorant: 2 users
+  - com.tencent.gamehelper.pg: 1 users
+  - com.tencent.gamehelper.smoba: 1 users
+  - com.tencent.hunyuan.app.chat: 6 users
+  - com.tencent.karaoke: 2 users
+  - com.tencent.map: 1 users
+  - com.tencent.mm: 63 users
+  - com.tencent.mobileqq: 21 users
+  - com.tencent.mtt: 8 users
+  - com.tencent.news: 1 users
+  - com.tencent.qqlive: 7 users
+  - com.tencent.qqmusic: 21 users
+  - com.tencent.qt.qtl: 2 users
+  - com.tencent.weishi: 1 users
+  - com.tencent.wemeet.app: 7 users
+  - com.tencent.weread: 9 users
+  - com.tencent.wework: 10 users
+  - com.tianqi2345: 1 users
+  - com.tiantianlexue.student.yingyuxuexibaoeng: 1 users
+  - com.tipsoon.android: 1 users
+  - com.tmall.campus.and: 2 users
+  - com.tmall.wireless: 3 users
+  - com.tmri.app.main: 4 users
+  - com.tongcheng.android: 1 users
+  - com.transport.taojiyun: 1 users
+  - com.twtapp: 1 users
+  - com.tyky.guizhou.dangjian.party: 1 users
+  - com.umetrip.android.msky.app: 5 users
+  - com.unidy2002.thuinfo: 4 users
+  - com.unionpay: 2 users
+  - com.uu898.uuhavequality: 1 users
+  - com.valvesoftware.android.steam.community: 1 users
+  - com.vanyun.onetalk.app: 1 users
+  - com.vgjump.jump: 1 users
+  - com.videogo: 1 users
+  - com.vivo.Tips: 1 users
+  - com.vivo.ai.copilot: 3 users
+  - com.vivo.browser: 3 users
+  - com.vivo.gallery: 1 users
+  - com.vivo.globalsearch: 1 users
+  - com.vivo.health: 2 users
+  - com.vivo.nightpearl: 1 users
+  - com.vivo.pay: 1 users
+  - com.vivo.space: 1 users
+  - com.vivo.weather: 6 users
+  - com.vmall.client: 1 users
+  - com.vphonegaga.titan: 1 users
+  - com.wdit.shrmtmh: 1 users
+  - com.wegene.future: 1 users
+  - com.weico.international: 2 users
+  - com.whova.event: 1 users
+  - com.wisedu.cpdaily: 1 users
+  - com.wiwj.xiangyucustomer: 1 users
+  - com.wuba: 1 users
+  - com.wudaokou.hippo: 8 users
+  - com.xiachufang: 2 users
+  - com.xiaomi.market: 11 users
+  - com.xiaomi.shop: 5 users
+  - com.xiaomi.smarthome: 1 users
+  - com.xiaomi.vipaccount: 2 users
+  - com.xiaomi.youpin: 1 users
+  - com.ximalaya.ting.android: 3 users
+  - com.xingin.xhs: 65 users
+  - com.xmcy.hykb: 1 users
+  - com.xs.fm: 1 users
+  - com.xs.fm.lite: 1 users
+  - com.xt.retouch: 2 users
+  - com.xtc.watch: 1 users
+  - com.xuehai.response: 1 users
+  - com.xunmeng.pinduoduo: 24 users
+  - com.yaya.zone: 1 users
+  - com.yek.android.kfc.activitys: 3 users
+  - com.ygkj.chelaile.standard: 1 users
+  - com.yhhy.whrhx.mi: 1 users
+  - com.yipiao: 2 users
+  - com.yitong.cd.mbank.android: 1 users
+  - com.yongyou: 1 users
+  - com.youdao.dict: 10 users
+  - com.youdao.translator: 1 users
+  - com.youku.phone: 3 users
+  - com.youloft.daziplan: 1 users
+  - com.youqi.miaomiao: 1 users
+  - com.yumc.phsuperapp: 2 users
+  - com.yuque.mobile.android.app: 1 users
+  - com.yxt.phoenix: 1 users
+  - com.zebra.ichess: 1 users
+  - com.zhaopin.social: 1 users
+  - com.zhihu.android: 33 users
+  - com.zhihu.vip.android: 1 users
+  - com.zhipuai.qingyan: 1 users
+  - com.zlketang.mm: 1 users
+  - com.zmzx.college.search: 1 users
+  - com.zte.smarthome: 1 users
+  - com.zzw.october: 2 users
+  - ctrip.android.view: 23 users
+  - enfc.metro: 2 users
+  - im.xingzhe: 1 users
+  - io.legado.play.release: 1 users
+  - io.robertying.learnx: 2 users
+  - jp.co.canon.ic.cameraconnect: 1 users
+  - mark.via: 1 users
+  - me.ele: 15 users
+  - melandru.lonicera: 1 users
+  - net.csdn.csdnplus: 4 users
+  - net.researchgate.shellapp: 1 users
+  - nutstore.android: 1 users
+  - offershow.app: 1 users
+  - org.geekbang.geekTime: 1 users
+  - org.mozilla.firefox: 1 users
+  - plus.H5A84F959: 1 users
+  - rwy.baoan.netsupervisor: 1 users
+  - sg.edu.nus.univus: 1 users
+  - synjones.commerce.xjtu: 1 users
+  - tech.echoing.kuril: 1 users
+  - tv.acfundanmaku.video: 1 users
+  - tv.danmaku.bili: 69 users
+  - uni.UNIEB8DD7C: 1 users
+  - vz.com: 2 users
+
+[Most Used Scenarios] (by number of users)
+  - 交通工具: 47 users
+  - 他人住所: 1 users
+  - 住所: 79 users
+  - 停车场: 1 users
+  - 其他: 4 users
+  - 办公场所: 51 users
+  - 医疗机构: 13 users
+  - 商场: 34 users
+  - 地下车库: 1 users
+  - 城市街道: 38 users
+  - 娱乐休闲场所: 41 users
+  - 学校: 65 users
+  - 小区楼底: 1 users
+  - 小卖部: 1 users
+  - 快递柜: 1 users
+  - 快递柜附近: 1 users
+  - 快递点: 1 users
+  - 快递站: 1 users
+  - 快递驿站: 1 users
+  - 文艺场馆: 15 users
+  - 旅店: 1 users
+  - 电梯: 1 users
+  - 自然户外: 31 users
+  - 运动场馆: 27 users
+  - 银行: 1 users
+  - 餐饮场所: 57 users
+  - 驿站: 1 users
+  - 高铁站: 2 users
+
+[Unique Usage Items per User]
+
+  -- User '1' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '3' --
+    - Apps unique to this user: com.bmcc.ms.ui, com.coderpage.mine, com.koudai.weishop
+    - Data: 27 items (11.4%)
+    - Scenarios unique to this user: 快递站
+    - Data: 11 items (4.7%)
+
+  -- User '4' --
+    - Apps unique to this user: com.jstd.seconddog, net.researchgate.shellapp
+    - Data: 2 items (1.5%)
+    - Scenarios unique to this user: None
+
+  -- User '5' --
+    - Apps unique to this user: com.bbk.theme, com.iqoo.secure, com.lqlc.mortgagecalculator, com.vivo.Tips, com.vivo.nightpearl, com.vivo.space
+    - Data: 29 items (9.4%)
+    - Scenarios unique to this user: None
+
+  -- User '6' --
+    - Apps unique to this user: com.showstartfans.activity
+    - Data: 3 items (1.4%)
+    - Scenarios unique to this user: None
+
+  -- User '9' --
+    - Apps unique to this user: synjones.commerce.xjtu
+    - Data: 4 items (2.4%)
+    - Scenarios unique to this user: None
+
+  -- User '10' --
+    - Apps unique to this user: com.positron_it.zlib, com.qq.ac.android, im.xingzhe
+    - Data: 9 items (3.0%)
+    - Scenarios unique to this user: None
+
+  -- User '11' --
+    - Apps unique to this user: com.ai.obc.cbn.app
+    - Data: 1 items (1.7%)
+    - Scenarios unique to this user: None
+
+  -- User '12' --
+    - Apps unique to this user: cn.lunkr.android, com.bwton.tjmetro, com.huawei.camera, com.twtapp
+    - Data: 8 items (5.8%)
+    - Scenarios unique to this user: None
+
+  -- User '13' --
+    - Apps unique to this user: com.cmcc.cmvideo, com.example.raylink_flutter, com.yuque.mobile.android.app, offershow.app
+    - Data: 14 items (4.1%)
+    - Scenarios unique to this user: None
+
+  -- User '14' --
+    - Apps unique to this user: cn.dxy.idxyer, com.happyelements.AndroidAnimal, com.jx.cmcc.ict.ibelieve, com.mc.acupoint_3d, com.nearme.gamecenter, com.oplus.games, com.oplus.play, com.tencent.map, uni.UNIEB8DD7C
+    - Data: 17 items (15.3%)
+    - Scenarios unique to this user: None
+
+  -- User '15' --
+    - Apps unique to this user: com.meitu.poster, com.oppo.launcher, com.shuyou.book, mark.via
+    - Data: 18 items (18.9%)
+    - Scenarios unique to this user: None
+
+  -- User '16' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '17' --
+    - Apps unique to this user: com.cdfsunrise.cdflehu, com.doudoubird.weather, com.huawei.android.thememanager, com.nike.omega, com.starbucks.cn, com.tencent.gamehelper.pg
+    - Data: 16 items (6.3%)
+    - Scenarios unique to this user: None
+
+  -- User '18' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '19' --
+    - Apps unique to this user: com.instagram.android, com.mfw.roadbook, com.valvesoftware.android.steam.community
+    - Data: 4 items (1.3%)
+    - Scenarios unique to this user: None
+
+  -- User '21' --
+    - Apps unique to this user: com.accordion.analogcam.cn, com.baidu.youavideo, com.mooda.xqrj, com.wisedu.cpdaily
+    - Data: 5 items (2.0%)
+    - Scenarios unique to this user: None
+
+  -- User '22' --
+    - Apps unique to this user: com.anjuke.android.app, com.wuba, io.legado.play.release
+    - Data: 5 items (2.0%)
+    - Scenarios unique to this user: None
+
+  -- User '23' --
+    - Apps unique to this user: com.duozhuayu.dejavu
+    - Data: 1 items (0.4%)
+    - Scenarios unique to this user: None
+
+  -- User '24' --
+    - Apps unique to this user: com.xiaomi.smarthome, com.xiaomi.youpin
+    - Data: 13 items (5.3%)
+    - Scenarios unique to this user: None
+
+  -- User '25' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '26' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '27' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '28' --
+    - Apps unique to this user: com.csair.mbp, com.dongqiudi.news, com.kgbs.ticket, com.lolaage.tbulu.tools, com.pupumall.customer, com.rytong.hnair, com.zhipuai.qingyan
+    - Data: 35 items (18.0%)
+    - Scenarios unique to this user: None
+
+  -- User '29' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '30' --
+    - Apps unique to this user: com.corp21cn.mail189, com.ct.client, com.edu24ol.newclass, com.huawei.music, com.huawei.videoeditor, com.sobeycloud.wangjie.jygbdst, com.taobao.litetao, com.tencent.android.qqdownloader, com.tencent.news, com.tencent.weishi, com.vmall.client, com.zhaopin.social
+    - Data: 27 items (22.3%)
+    - Scenarios unique to this user: None
+
+  -- User '31' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '32' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '34' --
+    - Apps unique to this user: com.whova.event
+    - Data: 1 items (0.7%)
+    - Scenarios unique to this user: None
+
+  -- User '36' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '37' --
+    - Apps unique to this user: com.android.incallui, com.google.android.apps.translate, com.google.android.googlequicksearchbox
+    - Data: 3 items (1.1%)
+    - Scenarios unique to this user: None
+
+  -- User '38' --
+    - Apps unique to this user: com.eusoft.eshelper
+    - Data: 1 items (0.3%)
+    - Scenarios unique to this user: None
+
+  -- User '39' --
+    - Apps unique to this user: com.hundsun.qy.hospitalcloud.bj.xhhosp.hsyy, com.rytong.ceair, com.vgjump.jump, com.wegene.future
+    - Data: 9 items (4.3%)
+    - Scenarios unique to this user: None
+
+  -- User '40' --
+    - Apps unique to this user: com.hihonor.systemmanager, com.shixiseng.activity
+    - Data: 13 items (3.6%)
+    - Scenarios unique to this user: 他人住所
+    - Data: 1 items (0.3%)
+
+  -- User '41' --
+    - Apps unique to this user: com.netease.mobimail
+    - Data: 1 items (0.5%)
+    - Scenarios unique to this user: None
+
+  -- User '42' --
+    - Apps unique to this user: com.htinns, melandru.lonicera
+    - Data: 36 items (10.9%)
+    - Scenarios unique to this user: None
+
+  -- User '43' --
+    - Apps unique to this user: sg.edu.nus.univus
+    - Data: 1 items (1.2%)
+    - Scenarios unique to this user: None
+
+  -- User '44' --
+    - Apps unique to this user: cn.wenyu.bodian, com.flyersoft.moonreaderp, com.miui.player, com.miui.voiceassist, com.tencent.gamehelper.smoba
+    - Data: 17 items (5.9%)
+    - Scenarios unique to this user: None
+
+  -- User '45' --
+    - Apps unique to this user: cn.edu.pku.treehole
+    - Data: 3 items (1.3%)
+    - Scenarios unique to this user: None
+
+  -- User '46' --
+    - Apps unique to this user: cn.comicup.apps.cppub, cn.milkycandy.objection, cn.ticktick.task, com.chaozh.iReaderFree, com.meitu.meiyancamera, com.netease.huajia
+    - Data: 18 items (6.4%)
+    - Scenarios unique to this user: None
+
+  -- User '47' --
+    - Apps unique to this user: com.denglin.duck, com.jhyan.yan, com.lingxigames.yuan.cn, com.psyone.brainmusic
+    - Data: 44 items (12.7%)
+    - Scenarios unique to this user: 快递柜, 快递柜附近, 快递点
+    - Data: 4 items (1.2%)
+
+  -- User '48' --
+    - Apps unique to this user: com.liulishuo.engzo
+    - Data: 1 items (1.9%)
+    - Scenarios unique to this user: None
+
+  -- User '49' --
+    - Apps unique to this user: com.hihonor.mms, com.youloft.daziplan, com.youqi.miaomiao, tech.echoing.kuril
+    - Data: 5 items (2.7%)
+    - Scenarios unique to this user: None
+
+  -- User '51' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '52' --
+    - Apps unique to this user: com.huawei.contacts, com.huawei.wallet
+    - Data: 4 items (1.7%)
+    - Scenarios unique to this user: None
+
+  -- User '53' --
+    - Apps unique to this user: org.mozilla.firefox
+    - Data: 69 items (42.6%)
+    - Scenarios unique to this user: None
+
+  -- User '54' --
+    - Apps unique to this user: cn.unipus.ucampus.student, com.able.wisdomtree, com.uu898.uuhavequality
+    - Data: 4 items (1.1%)
+    - Scenarios unique to this user: None
+
+  -- User '55' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '56' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: 银行
+    - Data: 1 items (0.3%)
+
+  -- User '57' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '58' --
+    - Apps unique to this user: com.jdjdc.jdfastjdc
+    - Data: 4 items (8.2%)
+    - Scenarios unique to this user: None
+
+  -- User '59' --
+    - Apps unique to this user: cn.com.yunma.school.app, cn.kaiheila, com.eusoft.eudic, com.example.administrator.searchpicturetool, com.hhk.hh10, com.jzyd.coupon, com.netease.gl, com.nyafun, com.qooapp.qoohelper, com.sdo.sdaccountkey, com.sohu.inputmethod.sogou, com.sonkwoapp, com.steampy.app, tv.acfundanmaku.video
+    - Data: 29 items (8.1%)
+    - Scenarios unique to this user: 快递驿站, 驿站
+    - Data: 4 items (1.1%)
+
+  -- User '61' --
+    - Apps unique to this user: com.copymanga.app, com.daxiamx.bangumi.webs, com.miHoYo.Yuanshen
+    - Data: 9 items (1.7%)
+    - Scenarios unique to this user: None
+
+  -- User '62' --
+    - Apps unique to this user: com.hihonor.hiboard, com.ixiaoma.xiningAndroid0971, com.yxt.phoenix
+    - Data: 13 items (4.9%)
+    - Scenarios unique to this user: 小区楼底
+    - Data: 1 items (0.4%)
+
+  -- User '63' --
+    - Apps unique to this user: com.huawei.email, com.sina.mail.free
+    - Data: 3 items (1.2%)
+    - Scenarios unique to this user: None
+
+  -- User '64' --
+    - Apps unique to this user: com.caing.news, com.podcast.podcasts, com.vivo.globalsearch
+    - Data: 15 items (10.8%)
+    - Scenarios unique to this user: None
+
+  -- User '65' --
+    - Apps unique to this user: com.badmintoncn.bbs, com.kugou.android.lite, com.netease.newsreader.activity
+    - Data: 51 items (16.7%)
+    - Scenarios unique to this user: None
+
+  -- User '66' --
+    - Apps unique to this user: com.cctv.yangshipin.app.androidp, com.clover.daysmatter, com.plan.kot32.tomatotime
+    - Data: 4 items (4.0%)
+    - Scenarios unique to this user: None
+
+  -- User '67' --
+    - Apps unique to this user: com.hypergryph.skland
+    - Data: 7 items (2.9%)
+    - Scenarios unique to this user: None
+
+  -- User '69' --
+    - Apps unique to this user: com.realtech.xiaocan
+    - Data: 4 items (2.5%)
+    - Scenarios unique to this user: None
+
+  -- User '70' --
+    - Apps unique to this user: cn.gov.lottery, com.cdsg.zgph, com.didapinche.booking, com.seblong.idream, com.vivo.gallery, com.vivo.pay, com.yitong.cd.mbank.android, com.zlketang.mm
+    - Data: 29 items (9.8%)
+    - Scenarios unique to this user: 停车场, 小卖部, 电梯
+    - Data: 5 items (1.7%)
+
+  -- User '71' --
+    - Apps unique to this user: com.fenbi.android.servant, com.maidu.gkld, com.tipsoon.android
+    - Data: 18 items (5.2%)
+    - Scenarios unique to this user: None
+
+  -- User '72' --
+    - Apps unique to this user: com.iguopin.app, com.miui.tsmclient
+    - Data: 2 items (1.1%)
+    - Scenarios unique to this user: None
+
+  -- User '73' --
+    - Apps unique to this user: com.alimama.moon, com.cat.readall, com.example.musicclip, com.hexin.android.futures, com.hp.printercontrol, com.midea.ai.appliances, com.xtc.watch, com.zhihu.vip.android, jp.co.canon.ic.cameraconnect, plus.H5A84F959
+    - Data: 37 items (8.5%)
+    - Scenarios unique to this user: None
+
+  -- User '74' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
+
+  -- User '75' --
+    - Apps unique to this user: com.samsung.android.calendar, com.samsung.android.messaging, com.sec.android.app.clockpackage, com.sec.android.app.launcher, com.sec.android.app.sbrowser, com.supor.aiot
+    - Data: 91 items (22.5%)
+    - Scenarios unique to this user: None
+
+  -- User '76' --
+    - Apps unique to this user: com.huatu.handheld_huatu
+    - Data: 5 items (1.5%)
+    - Scenarios unique to this user: None
+
+  -- User '77' --
+    - Apps unique to this user: com.caidazq.dzhNew, com.cdzq.gst.android, com.eastmoney.android.fund, com.xs.fm.lite
+    - Data: 76 items (16.9%)
+    - Scenarios unique to this user: None
+
+  -- User '79' --
+    - Apps unique to this user: com.dz.hmjc, com.smile.gifmaker
+    - Data: 6 items (6.5%)
+    - Scenarios unique to this user: None
+
+  -- User '80' --
+    - Apps unique to this user: com.baidu.homework, com.batiao.aiwrite, com.clx.xtb, com.ks.kaishustory, com.reading91.app, com.tiantianlexue.student.yingyuxuexibaoeng, com.xs.fm
+    - Data: 65 items (15.7%)
+    - Scenarios unique to this user: None
+
+  -- User '83' --
+    - Apps unique to this user: com.handsgo.jiakao.android, com.moji.mjweather
+    - Data: 14 items (10.3%)
+    - Scenarios unique to this user: None
+
+  -- User '86' --
+    - Apps unique to this user: cn.cntvnews, cn.volvo.vcc, com.moutai.mall, com.tianqi2345, com.tyky.guizhou.dangjian.party
+    - Data: 68 items (22.8%)
+    - Scenarios unique to this user: None
+
+  -- User '88' --
+    - Apps unique to this user: com.cebbank.mpoinx, com.eastmoney.android.berlin, com.huawei.ohos.inputmethod, com.simshine.cn.aiothd, com.smzdm.client.android
+    - Data: 71 items (23.8%)
+    - Scenarios unique to this user: None
+
+  -- User '89' --
+    - Apps unique to this user: cn.TuHu.android, com.alicloud.databox, com.dw.btime, com.hanweb.android.zhejiang.activity, com.hzhu.m, com.iflytek.elpmobile.marktool, com.iflytek.xiaoxin, com.lingan.seeyou, com.ruguoapp.jike, com.wiwj.xiangyucustomer, com.xuehai.response
+    - Data: 27 items (11.8%)
+    - Scenarios unique to this user: None
+
+  -- User '90' --
+    - Apps unique to this user: com.youdao.translator
+    - Data: 3 items (5.8%)
+    - Scenarios unique to this user: None
+
+  -- User '91' --
+    - Apps unique to this user: com.duokan.phone.remotecontroller, com.fenbi.android.solar, com.oray.sunlogin, com.yhhy.whrhx.mi, com.zebra.ichess, com.zmzx.college.search
+    - Data: 9 items (4.2%)
+    - Scenarios unique to this user: None
+
+  -- User '93' --
+    - Apps unique to this user: com.soufun.app, com.transport.taojiyun, com.videogo, nutstore.android
+    - Data: 37 items (11.3%)
+    - Scenarios unique to this user: None
+
+  -- User '94' --
+    - Apps unique to this user: com.miui.mediaeditor
+    - Data: 4 items (0.8%)
+    - Scenarios unique to this user: 地下车库, 旅店
+    - Data: 5 items (1.0%)
+
+  -- User '95' --
+    - Apps unique to this user: com.guosen.android, com.huawei.hwireader
+    - Data: 31 items (7.6%)
+    - Scenarios unique to this user: None
+
+  -- User '96' --
+    - Apps unique to this user: com.cutv.shakeshakestglt, com.entrobus.dreamlife, com.gf.client, com.hicorenational.antifraud, com.hihonor.contacts, com.kingpoint.gmcchh, com.nfdaily.nfplus, com.shiqichuban.android, com.ss.android.article.lite, com.vanyun.onetalk.app
+    - Data: 140 items (27.9%)
+    - Scenarios unique to this user: None
+
+  -- User '97' --
+    - Apps unique to this user: com.alibaba.aliyun, com.baidu.duer.superapp, com.guanaitong, com.heytap.quicksearchbox, com.sinovatech.unicom.ui, com.wdit.shrmtmh, com.yaya.zone, com.yongyou, com.zte.smarthome, org.geekbang.geekTime
+    - Data: 47 items (11.8%)
+    - Scenarios unique to this user: None
+
+  -- User '99' --
+    - Apps unique to this user: bin.mt.plus, com.android.fileexplorer, com.android.thememanager, com.beevle.xz.renxing.gdong, com.byfen.market, com.coolapk.market, com.fileunzip.zxwknight, com.job.android, com.jym.gcmall, com.kingagroot.kingdraw, com.lion.market, com.miui.fm, com.njh.biubiu, com.qq.qcloud, com.sixrpg.opalyer, com.tongcheng.android, com.vphonegaga.titan, com.xmcy.hykb, com.ygkj.chelaile.standard, rwy.baoan.netsupervisor
+    - Data: 30 items (11.7%)
+    - Scenarios unique to this user: None
+
+  -- User '100' --
+    - Apps unique to this user: None
+    - Scenarios unique to this user: None
 
 ----------------------------------------------------

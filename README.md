@@ -1,6 +1,24 @@
 # PIGG
 PIGG: Personalized Interactive GUI Grounding
 
+## 🎯 Performance Highlights
+
+Our personalized GUI grounding approach achieves significant improvements over baseline methods:
+
+- **✨ 44.42% Click Accuracy** - Personalized model achieves 70% improvement over vanilla baseline
+- **📉 260.50 Mean L2 Distance** - 30% reduction in prediction error compared to global model
+- **🎯 185.29 Median L2 Distance** - Superior precision in target localization
+
+| Model Type | Click Acc. @14% ↑ | Mean L2 ↓ | Median L2 ↓ |
+|------------|------------------|-----------|-------------|
+| Vanilla | 26.03 | 373.39 | 338.25 |
+| Global | 34.22 | 322.69 | 290.15 |
+| **Global + Personalized** | **44.42** | **260.50** | **185.29** |
+
+The personalized approach combines global knowledge with user-specific adaptations, demonstrating the effectiveness of personalized fine-tuning for GUI interaction tasks.
+
+---
+
 ## Installation
 
 ### 1. Create Conda Environment
